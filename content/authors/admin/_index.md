@@ -1,54 +1,71 @@
 ---
 # Display name
-title: 吳健雄
+title: John Thorp
 
 # Name pronunciation (optional)
-name_pronunciation: Chien Shiung Wu
+name_pronunciation: 
 
 # Full name (for SEO)
-first_name: Shiung Wu
-last_name: Chien
+first_name: John
+last_name: Thorp
 
 # Status emoji
 status:
-  icon: ☕️
+  icon: 🥑
 
 # Is this the primary user of the site?
 superuser: true
 
 # Role/position/tagline
-role: Professor of Artificial Intelligence
+role: PhD Candidate in Cognitive Neuroscience
 
 # Organizations/Affiliations to show in About widget
 organizations:
-  - name: Stanford University
-    url: https://www.stanford.edu/
+  - name: Columbia University Department of Psychology
+    url: https://psychology.columbia.edu/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: Cognitive neuroscientist and musician interested in how information is encoded and consolidated across distributed systems
 
 # Interests to show in About widget
 interests:
-  - Artificial Intelligence
-  - Computational Linguistics
-  - Information Retrieval
+  - neural geometry
+  - human behavior
+  - teaching & learning
 
 # Education to show in About widget
 education:
   courses:
-    - course: PhD in Artificial Intelligence
-      institution: Stanford University
-      year: 2012
-    - course: MEng in Artificial Intelligence
-      institution: Massachusetts Institute of Technology
-      year: 2009
-    - course: BSc in Artificial Intelligence
-      institution: Massachusetts Institute of Technology
-      year: 2008
+    - course: PhD in Psychology
+      institution: Columbia University
+      year: May 2024
+    - course: BA in Philosophy of Cognitive Neuroscience; BA in Music Performance; Minor in Chemistry
+      institution: University of North Carolina at Chapel Hill
+      year: May 2017
 
 # Skills
 # For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
 skills:
+  - name: Scientific
+    color: '#eeac02'
+    color_border: '#f0bf23'
+    items:
+      - name: experimental design
+        description: ''
+        percent: 100
+        icon: human_brain
+      - name: data visualization 
+        description: ''
+        percent: 80
+        icon: dashboard
+      - name: written communication
+        description: ''
+        percent: 80
+        icon: documents
+      - name: verbal communication
+        description: ''
+        percent: 100
+        icon: presentation
   - name: Technical
     items:
       - name: Python
@@ -56,35 +73,56 @@ skills:
         percent: 80
         icon: python
         icon_pack: fab
-      - name: Data Science
+      - name: R
         description: ''
         percent: 100
-        icon: chart-line
-        icon_pack: fas
-      - name: SQL
+        icon: rstudio
+      - name: UNIX
         description: ''
-        percent: 40
-        icon: database
-        icon_pack: fas
-  - name: Hobbies
+        percent: 60
+        icon: linux
+      - name: MATLAB
+        description: ''
+        percent: 60
+        icon: matlab
+- name: Soft
     color: '#eeac02'
     color_border: '#f0bf23'
     items:
-      - name: Hiking
-        description: ''
-        percent: 60
-        icon: person-hiking
-        icon_pack: fas
-      - name: Cats
-        description: ''
-        percent: 100
-        icon: cat
-        icon_pack: fas
-      - name: Photography
+      - name: project management
         description: ''
         percent: 80
-        icon: camera-retro
-        icon_pack: fas
+        icon: pie-chart-icon
+      - name: team management
+        description: ''
+        percent: 60
+        icon: team
+      - name: classroom design
+        description: ''
+        percent: 80
+        icon: pen-and-paper
+      - name: interfacing with senior leadership
+        description: ''
+        percent: 100
+        icon: businesswoman
+  - name: Analytical
+    items:
+      - name: multivariate statistics
+        description: ''
+        percent: 100
+        icon: rubikscube
+      - name: multilevel, non-linear regression
+        description: ''
+        percent: 80
+        icon: lmm02
+      - name: NLP
+        description: ''
+        percent: 60
+        icon: embedding
+      - name: Bayesian statistics
+        description: ''
+        percent: 60
+        icon: Bayes_icon
 
 # Social/Academic Networking
 # For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
@@ -94,21 +132,20 @@ social:
   - icon: envelope
     icon_pack: fas
     link: '/#contact'
-  - icon: twitter
-    icon_pack: fab
-    link: https://twitter.com/GeorgeCushen
-    label: Follow me on Twitter
+  - icon: Bluesky_butterfly-icon
+    link: https://bsky.app/profile/johnthorp.bsky.social
+    label: Follow me on Blue Sky
     display:
       header: true
-  - icon: graduation-cap # Alternatively, use `google-scholar` icon from `ai` icon pack
-    icon_pack: fas
-    link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  - icon: google-scholar # Alternatively, use `google-scholar` icon from `ai` icon pack
+    icon_pack: ai
+    link: https://scholar.google.com/citations?user=2MbUs34AAAAJ&hl=en&oi=ao
   - icon: github
     icon_pack: fab
-    link: https://github.com/gcushen
+    link: https://github.com/jnthorp
   - icon: linkedin
     icon_pack: fab
-    link: https://www.linkedin.com/
+    link: https://www.linkedin.com/in/john-thorp-713256252/
   # Link to a PDF of your resume/CV.
   # To use: copy your resume to `static/uploads/resume.pdf`, enable `ai` icons in `params.yaml`,
   # and uncomment the lines below.
@@ -120,5 +157,5 @@ social:
 highlight_name: true
 ---
 
-Chien Shiung Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
-{style="text-align: justify;"}
+Hi! I'm John. I'm a PhD candidate in cognitive neuroscience. I think a lot about how neural geometry supports human behavior and experiences. I care deeply about how we can apply these principles to the classroom. These interests have left me with a very particular, somewhat non-sequitir set of skills and projects that I'd like to tell you about here.
+{style="text-align: center;"}
