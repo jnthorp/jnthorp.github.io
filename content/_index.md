@@ -12,6 +12,7 @@ sections:
       # Choose a user profile to display (a folder name within `content/authors/`)
       username: admin
   - block: skills
+    id: skills
     content:
       title: skills
       text: ''
@@ -20,6 +21,7 @@ sections:
     design:
       columns: '1'
   - block: experience
+    id: experience
     content:
       title: experience
       # Date format for experience
