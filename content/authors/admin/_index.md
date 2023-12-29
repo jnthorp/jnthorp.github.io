@@ -46,6 +46,7 @@ education:
 # Skills
 # For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
 skills:
+  upper: false
   - name: scientific
     color: '#eeac02'
     color_border: '#f0bf23'
