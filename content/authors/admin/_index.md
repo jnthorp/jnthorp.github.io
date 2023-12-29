@@ -25,7 +25,7 @@ organizations:
     url: https://psychology.columbia.edu/
 
 # Short bio (displayed in user profile at end of posts)
-bio: Cognitive neuroscientist and musician interested in how information is encoded and consolidated across distributed systems
+bio: John Thorp is a cognitive neuroscientist and musician interested in how information is encoded and consolidated across distributed systems.
 
 # Interests to show in About widget
 interests:
@@ -38,10 +38,10 @@ education:
   courses:
     - course: PhD in Psychology
       institution: Columbia University
-      year: 2024
-    - course: BA in Philosophy of Cognitive Neuroscience; BA in Music Performance; Minor in Chemistry
+      year: May 2024
+    - course: BA in Philosophy of Cognitive Neuroscience\nBA in Music Performance\nMinor in Chemistry
       institution: University of North Carolina at Chapel Hill
-      year: 2017
+      year: May 2017
 
 # Skills
 # For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
@@ -134,7 +134,7 @@ social:
   - icon: envelope
     icon_pack: fas
     link: '/#contact'
-  - icon: Bluesky_butterfly-icon
+  - icon: Bluesky_butterfly-logo
     link: https://bsky.app/profile/johnthorp.bsky.social
     label: Follow me on Blue Sky
     display:
