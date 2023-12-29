@@ -47,7 +47,6 @@ education:
 # For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
 skills:
   - name: scientific
-    upper: false
     color: '#eeac02'
     color_border: '#f0bf23'
     items:
@@ -94,8 +93,8 @@ skills:
         icon: matlab
         icon_pack: custom
   - name: soft
-    color: '#800080'
-    color_border: '#800080'
+    color: '#7766cc'
+    color_border: '#7766cc'
     items:
       - name: project management
         description: ''
@@ -118,8 +117,8 @@ skills:
         icon: businesswoman
         icon_pack: custom
   - name: analytical
-    color: '#008000'
-    color_border: '#008000'
+    color: '#008811'
+    color_border: '#008811'
     items:
       - name: multivariate statistics
         description: ''
