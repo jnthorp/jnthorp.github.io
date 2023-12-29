@@ -209,12 +209,10 @@ sections:
   - block: contact
     id: contact
     content:
-      title: Contact
+      title: contact
       subtitle:
-      text: |-
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mi diam, venenatis ut magna et, vehicula efficitur enim.
       # Contact (add or remove contact options as necessary)
-      email: john.n.thorp@gmail.com
+      email: john [dot] n [dot] thorp@gmail.com
       phone: ''
       appointment_url: ''
       address:
@@ -229,8 +227,25 @@ sections:
       coordinates:
         latitude: '40.80861190951799'
         longitude: '-73.96048250193572'  
+      contact_links:
+        - icon: envelope
+          icon_pack: fas
+          link: '/#contact'
+        - icon: Bluesky_butterfly-logo
+          icon_pack: custom
+          link: https://bsky.app/profile/johnthorp.bsky.social
+          label: Follow me on Blue Sky
+        - icon: google-scholar # Alternatively, use `google-scholar` icon from `ai` icon pack
+          icon_pack: ai
+          link: https://scholar.google.com/citations?user=2MbUs34AAAAJ&hl=en&oi=ao
+        - icon: github
+          icon_pack: fab
+          link: https://github.com/jnthorp
+        - icon: linkedin
+          icon_pack: fab
+          link: https://www.linkedin.com/in/john-thorp-713256252/
       # Automatically link email and phone or display as text?
-      autolink: false
+      autolink: true
       # Email form provider
       form:
         provider: netlify
@@ -238,7 +253,7 @@ sections:
           id:
         netlify:
           # Enable CAPTCHA challenge to reduce spam?
-          captcha: true
+          captcha: false
     design:
       columns: '2'
 ---
