@@ -86,7 +86,8 @@ skills:
       - name: UNIX
         description: ''
         percent: 60
-        icon: linux
+        icon: linux2
+        icon_pack: custom
       - name: MATLAB
         description: ''
         percent: 60
