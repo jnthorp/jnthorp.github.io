@@ -34,7 +34,7 @@ sections:
         - title: Research Fellow
           company: Davachi Lab
           company_url: 'https://davachilab.psychology.columbia.edu/'
-          company_logo: org-gc
+          company_logo: columbia
           location: Columbia University
           date_start: '2019-09-01'
           date_end: '2024-05-31'
@@ -44,7 +44,7 @@ sections:
         - title: Graduate Research Assistant
           company: Science of Learning Research (SOLER) Initiative
           company_url: 'https://soler.columbia.edu/'
-          company_logo: org-x
+          company_logo: columbia
           location: Columbia University
           date_start: '2022-01-01'
           date_end: '2024-05-31'
@@ -53,7 +53,7 @@ sections:
         - title: Research Associate
           company: Adcock Laboratory
           company_url: 'https://www.adcocklab.org/'
-          company_logo: org-x
+          company_logo: duke
           location: Duke University
           date_start: '2022-01-01'
           date_end: '2024-05-31'
