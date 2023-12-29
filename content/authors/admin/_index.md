@@ -46,7 +46,7 @@ education:
 # Skills
 # For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
 skills:
-  - name: Scientific
+  - name: scientific
     color: '#eeac02'
     color_border: '#f0bf23'
     items:
@@ -70,7 +70,7 @@ skills:
         percent: 100
         icon: presentation
         icon_pack: custom
-  - name: Technical
+  - name: technical
     items:
       - name: Python
         description: ''
@@ -91,7 +91,7 @@ skills:
         percent: 60
         icon: matlab
         icon_pack: custom
-  - name: Soft
+  - name: soft
     color: '#800080'
     color_border: '#800080'
     items:
@@ -115,7 +115,7 @@ skills:
         percent: 100
         icon: businesswoman
         icon_pack: custom
-  - name: Analytical
+  - name: analytical
     color: '#008000'
     color_border: '#008000'
     items:
@@ -124,6 +124,7 @@ skills:
         percent: 100
         icon: rubikscube
         icon_pack: custom
+        toLower: true
       - name: multilevel, non-linear regression
         description: ''
         percent: 80
