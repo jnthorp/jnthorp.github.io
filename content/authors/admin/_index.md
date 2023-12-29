@@ -122,18 +122,22 @@ skills:
         description: ''
         percent: 100
         icon: rubikscube
+        icon_pack: custom
       - name: multilevel, non-linear regression
         description: ''
         percent: 80
         icon: lmm02
+        icon_pack: custom
       - name: NLP
         description: ''
         percent: 60
         icon: embedding
+        icon_pack: custom
       - name: Bayesian statistics
         description: ''
         percent: 60
         icon: Bayes_icon
+        icon_pack: custom
 
 # Social/Academic Networking
 # For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
