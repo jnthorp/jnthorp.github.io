@@ -54,6 +54,7 @@ skills:
         description: ''
         percent: 100
         icon: human_brain
+        icon_pack: custom
       - name: data visualization 
         description: ''
         percent: 80
