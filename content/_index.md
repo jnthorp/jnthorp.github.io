@@ -118,7 +118,7 @@ sections:
       title: Recent & Upcoming Talks
       filters:
         folders:
-          - event/atlas
+          - event
     design:
       columns: '2'
       view: compact
