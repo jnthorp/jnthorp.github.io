@@ -81,6 +81,7 @@ skills:
         description: ''
         percent: 100
         icon: rstudio
+        icon_pack: custom
       - name: UNIX
         description: ''
         percent: 60
@@ -148,6 +149,7 @@ social:
     icon_pack: fas
     link: '/#contact'
   - icon: Bluesky_butterfly-logo
+    icon_pack: custom
     link: https://bsky.app/profile/johnthorp.bsky.social
     label: Follow me on Blue Sky
     display:
