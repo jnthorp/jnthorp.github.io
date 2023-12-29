@@ -59,14 +59,17 @@ skills:
         description: ''
         percent: 80
         icon: dashboard
+        icon_pack: custom
       - name: written communication
         description: ''
         percent: 80
         icon: documents
+        icon_pack: custom
       - name: verbal communication
         description: ''
         percent: 100
         icon: presentation
+        icon_pack: custom
   - name: Technical
     items:
       - name: Python
@@ -86,6 +89,7 @@ skills:
         description: ''
         percent: 60
         icon: matlab
+        icon_pack: custom
   - name: Soft
     color: '#800080'
     color_border: '#800080'
@@ -94,18 +98,22 @@ skills:
         description: ''
         percent: 80
         icon: pie-chart-icon
+        icon_pack: custom
       - name: team management
         description: ''
         percent: 60
         icon: team
+        icon_pack: custom
       - name: classroom design
         description: ''
         percent: 80
         icon: pen-and-paper
+        icon_pack: custom
       - name: interfacing with senior leadership
         description: ''
         percent: 100
         icon: businesswoman
+        icon_pack: custom
   - name: Analytical
     color: '#008000'
     color_border: '#008000'
