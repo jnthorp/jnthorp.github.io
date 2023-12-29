@@ -57,8 +57,8 @@ sections:
           company_url: 'https://www.adcocklab.org/'
           company_logo: duke
           location: Duke University
-          date_start: '2022-01-01'
-          date_end: '2024-05-31'
+          date_start: '2017-07-01'
+          date_end: '2019-05-31'
           description: Managed task scripts, IRB protocols, budgets, and 100s of participants across 5 behavioral and neuroimaging studies
     design:
       columns: '2'
