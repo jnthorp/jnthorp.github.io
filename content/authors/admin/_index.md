@@ -153,8 +153,6 @@ social:
     icon_pack: custom
     link: https://bsky.app/profile/johnthorp.bsky.social
     label: Follow me on Blue Sky
-    display:
-      header: true
   - icon: google-scholar # Alternatively, use `google-scholar` icon from `ai` icon pack
     icon_pack: ai
     link: https://scholar.google.com/citations?user=2MbUs34AAAAJ&hl=en&oi=ao
