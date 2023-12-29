@@ -39,7 +39,7 @@ education:
     - course: PhD in Psychology
       institution: Columbia University
       year: May 2024
-    - course: |-
+    - course: |
         BA in Philosophy of Cognitive Neuroscience 
         BA in Music Performance
         Minor in Chemistry
