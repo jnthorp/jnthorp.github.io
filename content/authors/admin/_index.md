@@ -67,6 +67,8 @@ skills:
         percent: 100
         icon: presentation
   - name: Technical
+    color: '#eeac02'
+    color_border: '#f0bf23'
     items:
       - name: Python
         description: ''
@@ -86,7 +88,7 @@ skills:
         percent: 60
         icon: matlab
   - name: Soft
-    color: '#eeac02'
+    color: '#36013f'
     color_border: '#f0bf23'
     items:
       - name: project management
@@ -106,6 +108,8 @@ skills:
         percent: 100
         icon: businesswoman
   - name: Analytical
+    color: '#007598'
+    color_border: '#f0bf23'
     items:
       - name: multivariate statistics
         description: ''
