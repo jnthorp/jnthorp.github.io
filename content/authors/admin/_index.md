@@ -39,10 +39,11 @@ education:
     - course: PhD in Psychology
       institution: Columbia University
       year: May 2024
-    - course: |2-
-        BA in Philosophy of Cognitive Neuroscience \n
-        BA in Music Performance \n
-        Minor in Chemistry \n
+    - course: |-
+        - BA in Philosophy of Cognitive Neuroscience
+        - BA in Music Performance
+        - Minor in Chemistry
+        
       institution: University of North Carolina at Chapel Hill
       year: May 2017
 
