@@ -52,39 +52,39 @@ skills:
     items:
       - name: experimental design
         description: ''
-        percent: 100
+        percent: 80
         icon: human_brain
         icon_pack: custom
       - name: data visualization 
         description: ''
-        percent: 80
+        percent: 60
         icon: dashboard
         icon_pack: custom
       - name: written communication
         description: ''
-        percent: 80
+        percent: 60
         icon: documents
         icon_pack: custom
       - name: verbal communication
         description: ''
-        percent: 100
+        percent: 80
         icon: presentation
         icon_pack: custom
   - name: technical
     items:
       - name: Python
         description: ''
-        percent: 80
+        percent: 60
         icon: python
         icon_pack: fab
       - name: R
         description: ''
-        percent: 100
+        percent: 90
         icon: rstudio
         icon_pack: custom
       - name: UNIX
         description: ''
-        percent: 60
+        percent: 40
         icon: linux2
         icon_pack: custom
       - name: MATLAB
@@ -98,12 +98,12 @@ skills:
     items:
       - name: project management
         description: ''
-        percent: 80
+        percent: 60
         icon: pie-chart-icon
         icon_pack: custom
       - name: team management
         description: ''
-        percent: 60
+        percent: 50
         icon: team
         icon_pack: custom
       - name: classroom design
@@ -113,7 +113,7 @@ skills:
         icon_pack: custom
       - name: interfacing with senior leadership
         description: ''
-        percent: 100
+        percent: 80
         icon: businesswoman
         icon_pack: custom
   - name: analytical
@@ -122,18 +122,18 @@ skills:
     items:
       - name: multivariate statistics
         description: ''
-        percent: 100
+        percent: 80
         icon: rubikscube
         icon_pack: custom
         toLower: true
       - name: multilevel, non-linear regression
         description: ''
-        percent: 80
+        percent: 70
         icon: lmm02
         icon_pack: custom
       - name: NLP
         description: ''
-        percent: 60
+        percent: 40
         icon: embedding
         icon_pack: custom
       - name: Bayesian statistics
