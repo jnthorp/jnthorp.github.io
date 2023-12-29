@@ -38,10 +38,10 @@ education:
   courses:
     - course: PhD in Psychology
       institution: Columbia University
-      year: May 2024
+      year: 2024
     - course: BA in Philosophy of Cognitive Neuroscience; BA in Music Performance; Minor in Chemistry
       institution: University of North Carolina at Chapel Hill
-      year: May 2017
+      year: 2017
 
 # Skills
 # For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
@@ -85,7 +85,7 @@ skills:
         description: ''
         percent: 60
         icon: matlab
-- name: Soft
+  - name: Soft
     color: '#eeac02'
     color_border: '#f0bf23'
     items:
