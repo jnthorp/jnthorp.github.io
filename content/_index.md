@@ -31,27 +31,33 @@ sections:
       #   Leave `date_end` empty if it's your current employer.
       #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
       items:
-        - title: CEO
-          company: GenCoin
-          company_url: ''
+        - title: Research Fellow
+          company: Davachi Lab
+          company_url: 'https://davachilab.psychology.columbia.edu/'
           company_logo: org-gc
-          location: California
-          date_start: '2021-01-01'
-          date_end: ''
+          location: Columbia University
+          date_start: '2019-09-01'
+          date_end: '2024-05-31'
           description: |2-
-              Responsibilities include:
+              Conducted end-to-end behavioral and neuroimaging research on original questions with far-reaching impacts on theories of the brain
 
-              * Analysing
-              * Modelling
-              * Deploying
-        - title: Professor of Semiconductor Physics
-          company: University X
-          company_url: ''
+        - title: Graduate Research Assistant
+          company: Science of Learning Research (SOLER) Initiative
+          company_url: 'https://soler.columbia.edu/'
           company_logo: org-x
-          location: California
-          date_start: '2016-01-01'
-          date_end: '2020-12-31'
-          description: Taught electronic engineering and researched semiconductor physics.
+          location: Columbia University
+          date_start: '2022-01-01'
+          date_end: '2024-05-31'
+          description: Designed and analyzed innovative studies quantifying the impact of classroom interventions on learning outcomes, including ungrading, EEG neurofeedback, and VR/AR
+        
+        - title: Research Associate
+          company: Adcock Laboratory
+          company_url: 'https://www.adcocklab.org/'
+          company_logo: org-x
+          location: Duke University
+          date_start: '2022-01-01'
+          date_end: '2024-05-31'
+          description: Managed task scripts, IRB protocols, budgets, and 100s of participants across 5 behavioral and neuroimaging studies
     design:
       columns: '2'
   - block: portfolio
