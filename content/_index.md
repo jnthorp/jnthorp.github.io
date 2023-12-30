@@ -61,7 +61,7 @@ sections:
       # Choose a user to display skills from (a folder name within `content/authors/`)
       username: admin
     design:
-      columns: '2'
+      columns: '1'
   - block: portfolio
     id: projects
     content:
@@ -127,7 +127,7 @@ sections:
       filters:
         folders:
           - publication
-        exclude_featured: true
+        exclude_featured: false
     design:
       columns: '2'
       view: citation
