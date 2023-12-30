@@ -56,6 +56,7 @@ skills:
     items:
       - name: experimental design
         description: ''
+        percent: ''
         icon: human_brain
         icon_pack: custom
       - name: data visualization 
