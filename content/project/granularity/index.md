@@ -1,8 +1,7 @@
 ---
 title: representational granularity across the hippocampus
 summary: A data-driven approach towards the long-standing, impactful issue of whether separate regions of the hippocampus naturally process representations at differing levels of granularity
-tags:
-  - neural geometry, machine learning, python, R
+tags: [neural geometry, machine learning, python, R]
 date: '2022-05-31T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).
