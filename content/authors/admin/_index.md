@@ -40,9 +40,9 @@ education:
       institution: Columbia University
       year: May 2024
     - course: |-
-        - BA in Philosophy of Cognitive Neuroscience
-        - BA in Music Performance
-        - Minor in Chemistry
+        BA in Philosophy of Cognitive Neuroscience;
+        BA in Music Performance;
+        Minor in Chemistry
         
       institution: University of North Carolina at Chapel Hill
       year: May 2017
@@ -56,7 +56,6 @@ skills:
     items:
       - name: experimental design
         description: ''
-        percent: 80
         icon: human_brain
         icon_pack: custom
       - name: data visualization 

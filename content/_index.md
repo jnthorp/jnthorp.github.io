@@ -79,10 +79,15 @@ sections:
       buttons:
         - name: All
           tag: '*'
-        - name: Deep Learning
-          tag: Deep Learning
-        - name: Other
-          tag: Demo
+        - name: neural geometry
+          tag: neural geometry
+        - name: human behavior
+          tag: human behavior
+        - name: teaching & learning
+          tag: teaching & learning
+        - name: machine learning
+          tag: machine learning
+
     design:
       # Choose how many columns the section has. Valid values: '1' or '2'.
       columns: '2'
