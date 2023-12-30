@@ -87,6 +87,14 @@ sections:
           tag: teaching & learning
         - name: machine learning
           tag: machine learning
+        - name: python
+          tag: python
+        - name: R
+          tag: R
+        - name: NLP
+          tag: nlp
+        - name: mobile EEG
+          tag: mobile EEG
 
     design:
       # Choose how many columns the section has. Valid values: '1' or '2'.

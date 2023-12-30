@@ -2,7 +2,7 @@
 title: contextual stability as a continuous moderator of event segmentation
 summary: leveraging non-linear multilevel Bayesian models to uncover novel sources of variance across subject behavior with theoretical and clinical relevance
 tags:
-  - human behavior, regression, Bayesian, non-linear, multilevel
+  - human behavior, machine learning
 date: '2022-12-31T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).
