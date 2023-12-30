@@ -32,6 +32,7 @@ interests:
   - neural geometry
   - human behavior
   - teaching & learning
+  - 
 
 # Education to show in About widget
 education:
@@ -39,10 +40,10 @@ education:
     - course: PhD in Psychology
       institution: Columbia University
       year: May 2024
-    - course: |-
-        BA in Philosophy of Cognitive Neuroscience;
-        BA in Music Performance;
-        Minor in Chemistry
+    - course: |2-
+          * BA in Philosophy of Cognitive Neuroscience;
+          * BA in Music Performance;
+          * Minor in Chemistry
         
       institution: University of North Carolina at Chapel Hill
       year: May 2017

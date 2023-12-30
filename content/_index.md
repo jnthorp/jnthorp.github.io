@@ -11,15 +11,6 @@ sections:
       title: biography
       # Choose a user profile to display (a folder name within `content/authors/`)
       username: admin
-  - block: skills
-    id: skills
-    content:
-      title: skills
-      text: ''
-      # Choose a user to display skills from (a folder name within `content/authors/`)
-      username: admin
-    design:
-      columns: '1'
   - block: experience
     id: experience
     content:
@@ -62,6 +53,15 @@ sections:
           description: Managed task scripts, IRB protocols, budgets, and 100s of participants across 5 behavioral and neuroimaging studies
     design:
       columns: '2'
+  - block: skills
+    id: skills
+    content:
+      title: skills
+      text: ''
+      # Choose a user to display skills from (a folder name within `content/authors/`)
+      username: admin
+    design:
+      columns: '1'
   - block: portfolio
     id: projects
     content:
