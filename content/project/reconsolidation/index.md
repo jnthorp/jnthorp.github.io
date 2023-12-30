@@ -1,8 +1,7 @@
 ---
 title: dopaminergic modulation of replay-mediated memory updating
 summary: leveraging NLP and multivariate pattern recognition to relate neural mechanisms to semantic interference
-tags:
-  - neural geometry, nlp
+tags: [neural geometry, nlp, fMRI, python]
 date: '2023-05-31T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).

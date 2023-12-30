@@ -1,8 +1,7 @@
 ---
 title: python package to reconnect muse headset
 summary: rectifying a widespread connection issue with the MUSE mobile EEG headset
-tags:
-  - mobile EEG, python
+tags: [mobile EEG, python]
 date: '2022-06-31T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).

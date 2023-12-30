@@ -65,7 +65,7 @@ sections:
   - block: portfolio
     id: projects
     content:
-      title: Projects
+      title: projects
       filters:
         folders:
           - project
@@ -77,7 +77,7 @@ sections:
       # To filter by a specific tag, set `tag` to an existing tag name.
       # To remove the toolbar, delete the entire `filter_button` block.
       buttons:
-        - name: All
+        - name: all
           tag: '*'
         - name: neural geometry
           tag: neural geometry
@@ -93,8 +93,12 @@ sections:
           tag: R
         - name: NLP
           tag: nlp
+        - name: fMRI
+          tag: fMRI
         - name: mobile EEG
           tag: mobile EEG
+        - name: eyetracker
+          tag: eyetracker
 
     design:
       # Choose how many columns the section has. Valid values: '1' or '2'.
