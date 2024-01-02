@@ -32,7 +32,7 @@ interests:
   - neural geometry
   - human behavior
   - teaching & learning
-  - 
+  - improvised music
 
 # Education to show in About widget
 education:
@@ -41,9 +41,9 @@ education:
       institution: Columbia University
       year: May 2024
     - course: |2-
-          * BA in Philosophy of Cognitive Neuroscience;
-          * BA in Music Performance;
-          * Minor in Chemistry
+          BA in Philosophy of Cognitive Neuroscience;
+          BA in Music Performance;
+          Minor in Chemistry
         
       institution: University of North Carolina at Chapel Hill
       year: May 2017
@@ -56,45 +56,45 @@ skills:
     color_border: '#f0bf23'
     items:
       - name: experimental design
-        description: ''
+        description: 'theory testing, operationalization, conducting experiments'
         percent: ''
         icon: human_brain
         icon_pack: custom
       - name: data visualization 
-        description: ''
-        percent: 60
+        description: 'ggplot'
+        percent: ''
         icon: dashboard
         icon_pack: custom
       - name: written communication
         description: ''
-        percent: 60
+        percent: ''
         icon: documents
         icon_pack: custom
       - name: verbal communication
         description: ''
-        percent: 80
+        percent: ''
         icon: presentation
         icon_pack: custom
   - name: technical
     items:
       - name: Python
         description: ''
-        percent: 60
+        percent: ''
         icon: python
         icon_pack: fab
       - name: R
         description: ''
-        percent: 90
+        percent: ''
         icon: rstudio
         icon_pack: custom
       - name: UNIX
         description: ''
-        percent: 40
+        percent: ''
         icon: linux2
         icon_pack: custom
       - name: MATLAB
         description: ''
-        percent: 60
+        percent: ''
         icon: matlab
         icon_pack: custom
   - name: soft
@@ -103,23 +103,23 @@ skills:
     items:
       - name: project management
         description: ''
-        percent: 60
+        percent: ''
         icon: pie-chart-icon
         icon_pack: custom
       - name: team management
         description: ''
-        percent: 50
+        percent: ''
         icon: team
-        icon_pack: custom
-      - name: classroom design
-        description: ''
-        percent: 80
-        icon: pen-and-paper
         icon_pack: custom
       - name: interfacing with senior leadership
         description: ''
-        percent: 80
+        percent: ''
         icon: businesswoman
+        icon_pack: custom
+      - name: classroom design
+        description: ''
+        percent: ''
+        icon: pen-and-paper
         icon_pack: custom
   - name: analytical
     color: '#008811'
@@ -127,23 +127,23 @@ skills:
     items:
       - name: multivariate statistics
         description: ''
-        percent: 80
+        percent: ''
         icon: rubikscube
         icon_pack: custom
         toLower: true
       - name: multilevel, non-linear regression
         description: ''
-        percent: 70
+        percent: ''
         icon: lmm02
         icon_pack: custom
       - name: NLP
         description: ''
-        percent: 40
+        percent: ''
         icon: embedding
         icon_pack: custom
       - name: Bayesian statistics
-        description: ''
-        percent: 60
+        description: 'brms, model comparison'
+        percent: ''
         icon: Bayes_icon
         icon_pack: custom
 
