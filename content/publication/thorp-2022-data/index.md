@@ -25,4 +25,7 @@ url_pdf: 'thorp-2022.pdf'
 url_code: 'https://github.com/jnthorp/ivs-parcels_open'
 url_dataset: 'http://rocklandsample.org/'
 url_project: 'granularity'
+image:
+  caption: ''
+  focal_point: Center
 ---
