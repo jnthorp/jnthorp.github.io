@@ -244,23 +244,6 @@ sections:
       coordinates:
         latitude: '40.80861190951799'
         longitude: '-73.96048250193572'  
-      contact_links:
-        - icon: envelope
-          icon_pack: fas
-          link: '/#contact'
-        - icon: Bluesky_butterfly-logo
-          icon_pack: custom
-          link: https://bsky.app/profile/johnthorp.bsky.social
-          label: Follow me on Blue Sky
-        - icon: google-scholar # Alternatively, use `google-scholar` icon from `ai` icon pack
-          icon_pack: ai
-          link: https://scholar.google.com/citations?user=2MbUs34AAAAJ&hl=en&oi=ao
-        - icon: github
-          icon_pack: fab
-          link: https://github.com/jnthorp
-        - icon: linkedin
-          icon_pack: fab
-          link: https://www.linkedin.com/in/john-thorp-713256252/
       # Automatically link email and phone or display as text?
       autolink: true
       # Email form provider
