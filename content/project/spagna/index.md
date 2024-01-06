@@ -1,7 +1,7 @@
 ---
 title: eeg markers of mind-wandering in the real-world classroom
 summary: exploring effects of theta/beta power of students wearing a mobile EEG headset during class
-tags: [human behavior, mobile EEG, teaching & learning]
+tags: [human behavior, mobile EEG, teaching]
 date: '2022-07-31T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).

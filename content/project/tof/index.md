@@ -1,7 +1,7 @@
 ---
 title: teaching observation fellowship
 summary: observing and being observed by fellow teachers across the university
-tags: [teaching & learning]
+tags: [teaching]
 date: '2023-05-31T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).

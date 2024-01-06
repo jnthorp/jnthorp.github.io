@@ -83,8 +83,8 @@ sections:
           tag: neural geometry
         - name: human behavior
           tag: human behavior
-        - name: teaching & learning
-          tag: teaching & learning
+        - name: teaching
+          tag: teaching
         - name: machine learning
           tag: machine learning
         - name: python

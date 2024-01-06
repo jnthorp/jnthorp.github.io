@@ -1,7 +1,7 @@
 ---
 title: quantifying bias in assessments of medical students
 summary: uncovering patterns of bias and making recommendations of how it can be reduced
-tags: [human behavior, teaching & learning]
+tags: [human behavior, teaching]
 date: '2022-01-31T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).

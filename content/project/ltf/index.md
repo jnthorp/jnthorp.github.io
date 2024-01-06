@@ -1,7 +1,7 @@
 ---
 title: lead teaching fellowship
 summary: maintaining a discipline-based community of teachers within the department of psychology 
-tags: [teaching & learning]
+tags: [teaching]
 date: '2022-05-31T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).
