@@ -223,37 +223,4 @@ sections:
   #       {{< gallery album="demo" >}}
   #   design:
   #     columns: '1'
-  - block: contact
-    id: contact
-    content:
-      title: contact
-      subtitle:
-      # Contact (add or remove contact options as necessary)
-      email: john [dot] n [dot] thorp@gmail.com
-      phone: ''
-      appointment_url: ''
-      address:
-        street: 1190 Amsterdam Ave
-        city: New York
-        region: NY
-        postcode: '10027'
-        country: United States
-        country_code: US
-      directions: ''
-      # Choose a map provider in `params.yaml` to show a map from these coordinates
-      coordinates:
-        latitude: '40.80861190951799'
-        longitude: '-73.96048250193572'  
-      # Automatically link email and phone or display as text?
-      autolink: true
-      # Email form provider
-      form:
-        provider: netlify
-        formspree:
-          id:
-        netlify:
-          # Enable CAPTCHA challenge to reduce spam?
-          captcha: false
-    design:
-      columns: '2'
 ---
