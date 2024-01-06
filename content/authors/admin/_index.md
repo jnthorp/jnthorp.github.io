@@ -66,34 +66,34 @@ skills:
         icon: dashboard
         icon_pack: custom
       - name: written communication
-        description: ''
+        description: 'peer-reviewed manuscripts, public science communication'
         percent: ''
         icon: documents
         icon_pack: custom
       - name: verbal communication
-        description: ''
+        description: 'posters, technical talks, public talks, lectures'
         percent: ''
         icon: presentation
         icon_pack: custom
   - name: technical
     items:
       - name: Python
-        description: ''
+        description: 'pandas, numpy, mne, nipy, nistats'
         percent: ''
         icon: python
         icon_pack: fab
       - name: R
-        description: ''
+        description: 'tidyverse, dplyr, ggplot'
         percent: ''
         icon: rstudio
         icon_pack: custom
       - name: UNIX
-        description: ''
+        description: 'batch, slurm'
         percent: ''
         icon: linux2
         icon_pack: custom
       - name: MATLAB
-        description: ''
+        description: 'spm, structs'
         percent: ''
         icon: matlab
         icon_pack: custom
@@ -102,22 +102,22 @@ skills:
     color_border: '#7766cc'
     items:
       - name: project management
-        description: ''
+        description: 'end-to-end research, google drive, slack'
         percent: ''
         icon: pie-chart-icon
         icon_pack: custom
       - name: team management
-        description: ''
+        description: 'tailoring assignments and projects'
         percent: ''
         icon: team
         icon_pack: custom
       - name: interfacing with senior leadership
-        description: ''
+        description: 'communicating takeaways and project needs'
         percent: ''
         icon: businesswoman
         icon_pack: custom
       - name: classroom design
-        description: ''
+        description: 'lecture roadmaps, syllabi, classroom inclusion'
         percent: ''
         icon: pen-and-paper
         icon_pack: custom
@@ -126,18 +126,18 @@ skills:
     color_border: '#008811'
     items:
       - name: multivariate statistics
-        description: ''
+        description: 'RSA, PCA, ICA'
         percent: ''
         icon: rubikscube
         icon_pack: custom
         toLower: true
       - name: multilevel, non-linear regression
-        description: ''
+        description: 'random slopes, shifted log-normal, logistic, gompertz'
         percent: ''
         icon: lmm02
         icon_pack: custom
       - name: NLP
-        description: ''
+        description: 'latent semantic analysis'
         percent: ''
         icon: embedding
         icon_pack: custom
