@@ -76,6 +76,8 @@ skills:
         icon: presentation
         icon_pack: custom
   - name: technical
+    color: '#6495ED'
+    color_border: '#6495ED'
     items:
       - name: Python
         description: 'pandas, numpy, mne, nipy, nistats'
