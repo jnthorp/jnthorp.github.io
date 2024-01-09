@@ -57,22 +57,22 @@ skills:
     items:
       - name: experimental design
         description: 'theory testing, operationalization, conducting experiments'
-        percent: ''
+        percent: '90'
         icon: human_brain
         icon_pack: custom
       - name: data visualization 
         description: 'ggplot'
-        percent: ''
+        percent: '75'
         icon: dashboard
         icon_pack: custom
       - name: written communication
         description: 'peer-reviewed manuscripts, public science communication'
-        percent: ''
+        percent: '70'
         icon: documents
         icon_pack: custom
       - name: verbal communication
         description: 'posters, technical talks, public talks, lectures'
-        percent: ''
+        percent: '90'
         icon: presentation
         icon_pack: custom
   - name: technical
@@ -81,22 +81,22 @@ skills:
     items:
       - name: Python
         description: 'pandas, numpy, mne, nipy, nistats'
-        percent: ''
+        percent: '75'
         icon: python
         icon_pack: fab
       - name: R
         description: 'tidyverse, dplyr, ggplot'
-        percent: ''
+        percent: '90'
         icon: rstudio
         icon_pack: custom
       - name: UNIX
         description: 'batch, slurm'
-        percent: ''
+        percent: '65'
         icon: linux2
         icon_pack: custom
       - name: MATLAB
         description: 'spm, structs'
-        percent: ''
+        percent: '80'
         icon: matlab
         icon_pack: custom
   - name: soft
@@ -105,22 +105,22 @@ skills:
     items:
       - name: project management
         description: 'end-to-end research, google drive, slack'
-        percent: ''
+        percent: '75'
         icon: pie-chart-icon
         icon_pack: custom
       - name: team management
         description: 'tailoring assignments and projects'
-        percent: ''
+        percent: '65'
         icon: team
         icon_pack: custom
       - name: interfacing with senior leadership
         description: 'communicating takeaways and project needs'
-        percent: ''
+        percent: '80'
         icon: businesswoman
         icon_pack: custom
       - name: classroom design
         description: 'lecture roadmaps, syllabi, classroom inclusion'
-        percent: ''
+        percent: '85'
         icon: pen-and-paper
         icon_pack: custom
   - name: analytical
@@ -129,23 +129,23 @@ skills:
     items:
       - name: multivariate statistics
         description: 'RSA, PCA, ICA'
-        percent: ''
+        percent: '90'
         icon: rubikscube
         icon_pack: custom
         toLower: true
       - name: multilevel, non-linear regression
         description: 'random slopes, shifted log-normal, logistic, gompertz'
-        percent: ''
+        percent: '80'
         icon: lmm02
         icon_pack: custom
       - name: NLP
         description: 'latent semantic analysis'
-        percent: ''
+        percent: '65'
         icon: embedding
         icon_pack: custom
       - name: Bayesian statistics
         description: 'brms, model comparison'
-        percent: ''
+        percent: '75'
         icon: Bayes_icon
         icon_pack: custom
 
