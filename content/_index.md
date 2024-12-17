@@ -24,15 +24,27 @@ sections:
       #   Leave `date_end` empty if it's your current employer.
       #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
       items:
+        - title: Lecturer in the Discipline of Psychology
+          company: Columbia University
+          company_url: 'https://psychology.columbia.edu/content/john-nathaniel-thorp'
+          company_logo: columbia
+          location: Columbia University
+          date_start: '2024-09-01'
+          date_end: 
+          description: |2-
+              Generated engaging, research-focused curricula for 2 advanced undergraduate and graduate courses in research methods, statistics in behavioral sciences, and experimental design
+
+
         - title: Research Fellow
           company: Davachi Lab
           company_url: 'https://davachilab.psychology.columbia.edu/'
           company_logo: columbia
           location: Columbia University
           date_start: '2019-09-01'
-          date_end: '2024-05-31'
+          date_end: 
           description: |2-
-              Conducted end-to-end behavioral and neuroimaging research on original questions with far-reaching impacts on theories of the brain
+              Designed and conducted 7 end-to-end behavioral and neuroimaging studies, leading to 3 conference posters, 5 invited talks, and 6 peer-reviewed manuscripts
+
 
         - title: Graduate Research Assistant
           company: Science of Learning Research (SOLER) Initiative
@@ -41,7 +53,8 @@ sections:
           location: Columbia University
           date_start: '2022-01-01'
           date_end: '2024-05-31'
-          description: Designed and analyzed innovative studies quantifying the impact of classroom interventions on learning outcomes, including ungrading, EEG neurofeedback, and VR/AR
+          description: Conducted 5 innovative studies quantifying educational intervention impacts, securing increased university funding through compelling published findings
+
         
         - title: Research Associate
           company: Adcock Laboratory
@@ -50,7 +63,8 @@ sections:
           location: Duke University
           date_start: '2017-07-01'
           date_end: '2019-05-31'
-          description: Managed task scripts, IRB protocols, budgets, and 100s of participants across 5 behavioral and neuroimaging studies
+          description: –	Maintained project goals and deadlines for 5 behavioral studies by managing protocols, budgets, and recruitment
+    
     design:
       columns: '2'
   - block: skills
