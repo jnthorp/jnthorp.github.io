@@ -17,7 +17,7 @@ status:
 superuser: true
 
 # Role/position/tagline
-role: Lecturer in the Discipline of Psychology
+role: Directory of Undergraduate Studies; Lecturer
 
 # Organizations/Affiliations to show in About widget
 organizations:
