@@ -4,6 +4,78 @@
 // Configuration - Railway API URL
 const API_URL = 'https://reflectify-api.up.railway.app';
 
+// Strategy and Feature Definitions
+const strategyDefinitions = {
+  'self_explanation': 'Explaining concepts to yourself in your own words to deepen understanding',
+  'elaborative_interrogation': 'Asking yourself "why" questions to understand underlying principles',
+  'summarization': 'Creating concise summaries to identify and remember key information',
+  'keyword_highlighting': 'Marking important terms and concepts for easier review',
+  'imagery_for_text': 'Creating mental images to help remember textual information',
+  'rereading': 'Going through material multiple times to improve comprehension',
+  'practice_testing': 'Testing yourself on material to strengthen memory and identify gaps',
+  'distributed_practice': 'Spacing out study sessions over time rather than cramming',
+  'interleaved_practice': 'Mixing different types of problems or topics within study sessions'
+};
+
+const featureDefinitions = {
+  'refl_experience_trend': {
+    name: 'Experience References Trend',
+    desc: 'How references to personal experiences change throughout your reflection'
+  },
+  'refl_experience_count': {
+    name: 'Experience References Count',
+    desc: 'Total number of times you reference personal experiences in your reflection'
+  },
+  'refl_perspective_count': {
+    name: 'Multiple Perspectives',
+    desc: 'How often you consider different viewpoints or approaches in your reflection'
+  },
+  'refl_critical_stance_trend': {
+    name: 'Critical Thinking Development',
+    desc: 'How your critical analysis develops throughout your reflection'
+  },
+  'refl_self_explanation_count': {
+    name: 'Self-Explanation Instances',
+    desc: 'Number of times you explain concepts in your own words'
+  },
+  'study_rereading_count': {
+    name: 'Rereading Mentions',
+    desc: 'How often you mention rereading as a study strategy'
+  },
+  'study_rereading_rate': {
+    name: 'Rereading Discussion Detail',
+    desc: 'How detailed your discussions of rereading strategies are'
+  },
+  'study_summarization_count': {
+    name: 'Summarization Mentions',
+    desc: 'How often you mention summarization as a study strategy'
+  },
+  'study_summarization_rate': {
+    name: 'Summarization Discussion Detail',
+    desc: 'How detailed your discussions of summarization strategies are'
+  },
+  'study_practice_testing_count': {
+    name: 'Practice Testing Mentions',
+    desc: 'How often you mention practice testing or self-testing'
+  },
+  'study_distributed_practice_count': {
+    name: 'Distributed Practice Mentions',
+    desc: 'How often you mention spacing out your study sessions'
+  },
+  'study_interleaved_practice_count': {
+    name: 'Interleaved Practice Mentions',
+    desc: 'How often you mention mixing different topics or problem types'
+  },
+  'num_sentences': {
+    name: 'Reflection Length',
+    desc: 'Total number of sentences in your reflection'
+  },
+  'avg_sentence_length': {
+    name: 'Average Sentence Length',
+    desc: 'Average number of words per sentence in your reflection'
+  }
+};
+
 // Main form submission handler
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM loaded, setting up form handler');
@@ -248,8 +320,8 @@ function displayResults(results, startTime) {
   `;
   
   // Display feature insights and sentence analysis
-  displayFeatureInsights(prediction.top_contributing_features);
-  displaySentenceAnalysis(results.sentence_analysis);
+  displayFeatureInsights(prediction.top_features);
+  displaySentenceAnalysis(results.analysis);
   
   resultsDiv.style.display = 'block';
   
