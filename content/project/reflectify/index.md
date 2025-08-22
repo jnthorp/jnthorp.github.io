@@ -33,7 +33,7 @@ sections:
           <span class="badge bg-warning text-dark">Educational Technology</span>
         </div>
 
-  - block: about.biography
+  - block: markdown
     id: about
     content:
       title: About Reflectify
@@ -52,11 +52,6 @@ sections:
         ### 📊 Educational Impact
         This tool bridges the gap between **metacognitive theory** and **practical application**, helping students develop more effective reflection practices through data-driven insights.
 
-  - block: markdown
-    id: reflectify-tool
-    content:
-      title: 
-      text: |
   - block: markdown
     id: reflectify-tool
     content:
