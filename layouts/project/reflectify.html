@@ -1,186 +1,664 @@
-{{- define "main" -}}
+{{/* This template extends the Hugo Academic base template */}}
+{{ define "main" }}
+
+<!-- Progress Overlay -->
+<div class="progress-overlay" id="progressOverlay">
+  <div class="progress-content">
+    <div class="progress-spinner"></div>
+    <div id="progressMessage" class="progress-text">
+      Analyzing Your Reflection...
+    </div>
+    <p class="progress-subtitle">Using NLP and machine learning to extract learning insights</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar-fill" id="progressBarFill"></div>
+    </div>
+  </div>
+</div>
 
 <article class="article">
-  <div class="article-container">
-    <div class="row">
-      <div class="col-12">
-        
-        {{/* Project header */}}
-        <div class="project-header">
-          <h1>{{ .Title }}</h1>
-          <p class="project-summary">{{ .Params.summary }}</p>
+  <div class="article-container pt-3">
+    <h1>{{ .Title }}</h1>
+    
+    {{ with .Params.summary }}
+    <p class="page-subtitle">{{ . }}</p>
+    {{ end }}
+
+    {{ if .Params.tags }}
+    <div class="article-metadata">
+      {{ range .Params.tags }}
+        <span class="badge badge-light">{{ . }}</span>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{ if .Params.links }}
+    <div class="btn-links mb-3">
+      {{ range .Params.links }}
+        <a class="btn btn-outline-primary btn-page-header btn-sm" href="{{ .url | relURL }}" target="{{ if eq (substr .url 0 4) "http" }}{{ "_blank" }}{{ end }}">
+          {{ with .icon }}<i class="{{ .icon_pack }} fa-{{ . }} pr-1" aria-hidden="true"></i>{{ end }}
+          {{ .name }}
+        </a>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{/* Project description content */}}
+    <div class="article-style">
+      {{ .Content }}
+    </div>
+
+    {{/* Interactive Reflectify Tool */}}
+    <div class="mt-5">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title mb-0">
+            <i class="fas fa-brain text-primary mr-2"></i>
+            Try Reflectify
+          </h3>
+          <p class="text-muted mt-2 mb-0">Interactive AI-powered reflection analysis</p>
+        </div>
+        <div class="card-body">
           
-          {{/* Project links */}}
-          {{ with .Params.links }}
-          <div class="project-links">
-            {{ range . }}
-            <a class="btn btn-outline-primary btn-sm" href="{{ .url }}" {{ if hasPrefix .url "http" }}target="_blank" rel="noopener"{{ end }}>
-              {{ if .icon }}<i class="{{ .icon_pack }} {{ if eq .icon_pack "fab" }}fa-{{ else }}fa-{{ end }}{{ .icon }}" aria-hidden="true"></i>{{ end }}
-              {{ .name }}
-            </a>
-            {{ end }}
+          {{/* Reflection Guidance */}}
+          <div class="alert alert-info mb-4">
+            <h6 class="alert-heading mb-3">
+              <i class="fas fa-lightbulb mr-2"></i>How to Write an Effective Reflection
+            </h6>
+            <div class="row">
+              <div class="col-lg-6 mb-3">
+                <ul class="mb-0">
+                  <li class="mb-2"><strong>Study Strategies:</strong> Describe your specific learning methods and techniques</li>
+                  <li class="mb-2"><strong>Challenges:</strong> What difficulties did you encounter and how did you address them?</li>
+                  <li><strong>Emotions:</strong> How did you feel about the material and learning process?</li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul class="mb-0">
+                  <li class="mb-2"><strong>Past Experiences:</strong> Connect new learning to previous knowledge or experiences</li>
+                  <li class="mb-2"><strong>Multiple Perspectives:</strong> Consider different approaches or viewpoints</li>
+                  <li><strong>Critical Analysis:</strong> Question and evaluate the effectiveness of your approach</li>
+                </ul>
+              </div>
+            </div>
           </div>
-          {{ end }}
-        </div>
 
-        {{/* Project content */}}
-        <div class="article-style">
-          {{ .Content }}
-        </div>
-
-        {{/* Interactive Tool Section */}}
-        <div class="reflectify-tool-section mt-5">
-          <h2>Try Reflectify</h2>
-          
-          <!-- Bootstrap CSS -->
-          <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-          <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
-          <div id="reflectify-tool" class="reflectify-card">
-            <div class="reflectify-header">
-              <h3 class="mb-0 d-flex align-items-center">
-                <i class="fas fa-microscope me-3"></i>
-                Analyze Your Learning Reflection
-              </h3>
-              <small class="opacity-75 mt-2 d-block">Get AI-powered insights into your study strategies and exam performance potential</small>
+          {{/* Input Form */}}
+          <form id="reflectionForm">
+            <div class="form-group">
+              <label for="reflection" class="font-weight-bold">
+                Your Study Reflection
+              </label>
+              <textarea 
+                class="form-control" 
+                id="reflection" 
+                name="reflection" 
+                rows="6"
+                placeholder="Share your thoughts about your recent study session. What strategies did you use? What worked well? What challenges did you face? What would you do differently next time?"
+                required
+              ></textarea>
+              <small class="form-text text-muted">
+                Minimum 50 characters required for meaningful analysis.
+              </small>
             </div>
             
-            <div class="reflectify-body">
-              <div class="alert alert-info mb-4">
-                <h6 class="alert-heading mb-2">
-                  <i class="fas fa-lightbulb me-2"></i>How to Write an Effective Reflection
-                </h6>
-                <div class="row">
-                  <div class="col-md-6">
-                    <ul class="mb-0 small">
-                      <li><strong>Study Strategies:</strong> Describe your learning methods</li>
-                      <li><strong>Challenges:</strong> What difficulties did you encounter?</li>
-                      <li><strong>Emotions:</strong> How did you feel about the material?</li>
-                    </ul>
-                  </div>
-                  <div class="col-md-6">
-                    <ul class="mb-0 small">
-                      <li><strong>Past Experiences:</strong> Connect to previous learning</li>
-                      <li><strong>Multiple Perspectives:</strong> Consider different viewpoints</li>
-                      <li><strong>Critical Analysis:</strong> Question and evaluate your approach</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+            <button type="submit" class="btn btn-primary btn-lg" id="analyzeBtn">
+              <span class="spinner-border spinner-border-sm mr-2" role="status" id="loadingSpinner" style="display: none;"></span>
+              <i class="fas fa-microscope mr-2" id="analyzeIcon"></i>
+              Analyze My Reflection
+            </button>
+          </form>
 
-              <form id="reflectionForm" class="mb-4">
-                <div class="mb-4">
-                  <label for="reflectionInput" class="form-label fw-semibold">
-                    Your Learning Reflection:
-                  </label>
-                  <textarea 
-                    id="reflectionInput" 
-                    class="form-control shadow-sm" 
-                    rows="10" 
-                    placeholder="Write your reflection here... For example: 'When I started studying thermodynamics, I felt overwhelmed by the complex equations. I tried reading the textbook multiple times, but I realized that simply rereading wasn't helping me understand the underlying concepts. I decided to try explaining each concept in my own words and connecting it to real-world examples I could observe...'"
-                    required>
-                  </textarea>
-                  <div class="form-text">
-                    <small class="text-muted">
-                      <i class="fas fa-info-circle me-1"></i>
-                      Aim for 5-10 sentences. Be specific about your study methods, challenges, and insights.
-                    </small>
+          {{/* Results Section */}}
+          <div id="results" class="mt-4" style="display: none;">
+            
+            {{/* Prediction Card */}}
+            <div class="card mt-4 border-primary">
+              <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">
+                  <i class="fas fa-chart-line mr-2"></i>
+                  Prediction Results
+                </h5>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-4 text-center">
+                    <h6>Improvement Probability</h6>
+                    <div class="display-4 font-weight-bold" id="improvementProbability">--</div>
+                  </div>
+                  <div class="col-md-4 text-center">
+                    <h6>Prediction</h6>
+                    <div class="h4" id="predictionResult">--</div>
+                  </div>
+                  <div class="col-md-4 text-center">
+                    <h6>Confidence</h6>
+                    <div class="h4" id="confidence">--</div>
                   </div>
                 </div>
-                
-                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                  <button type="submit" id="analyzeBtn" class="btn btn-primary btn-lg px-5 shadow-sm">
-                    <i id="analyzeIcon" class="fas fa-brain me-2"></i>
-                    <span id="loadingSpinner" class="spinner-border spinner-border-sm me-2" role="status" style="display: none;"></span>
-                    <span id="btnText">Analyze My Reflection</span>
-                  </button>
-                  
-                  <button type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="resetForm()">
-                    <i class="fas fa-undo me-2"></i>Reset
-                  </button>
+                <div class="mt-3">
+                  <h6>Interpretation</h6>
+                  <p id="interpretation" class="mb-0">--</p>
                 </div>
-              </form>
-              
-              <div id="errorAlert" class="alert alert-danger" style="display: none;">
-                <i class="fas fa-exclamation-triangle me-2"></i>
-                <span id="errorMessage"></span>
-              </div>
-              
-              <div class="text-center mt-3">
-                <small class="text-muted">
-                  <i class="fas fa-server me-1"></i>
-                  API Status: <span id="apiStatus" class="badge bg-secondary">Checking...</span>
-                </small>
               </div>
             </div>
+
+            {{/* Analysis Details */}}
+            <div class="card mt-3">
+              <div class="card-header">
+                <h5 class="card-title mb-0">
+                  <i class="fas fa-search mr-2"></i>
+                  Analysis Details
+                </h5>
+              </div>
+              <div class="card-body">
+                <div class="row text-center">
+                  <div class="col-md-4">
+                    <h6>Sentences Analyzed</h6>
+                    <div class="h4 text-primary" id="totalSentences">--</div>
+                  </div>
+                  <div class="col-md-4">
+                    <h6>Features Extracted</h6>
+                    <div class="h4 text-primary" id="featuresExtracted">--</div>
+                  </div>
+                  <div class="col-md-4">
+                    <h6>Processing Time</h6>
+                    <div class="h4 text-primary" id="processingTime">--</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {{/* Sentence-by-Sentence Analysis */}}
+            <div class="card mt-3">
+              <div class="card-header">
+                <h5 class="card-title mb-0">
+                  <i class="fas fa-search-plus mr-2"></i>
+                  Sentence-by-Sentence Analysis
+                </h5>
+              </div>
+              <div class="card-body">
+                <div id="sentenceAnalysis">Analyzing sentences...</div>
+              </div>
+            </div>
+
+            {{/* Personalized Feedback */}}
+            <div class="card mt-3">
+              <div class="card-header">
+                <h5 class="card-title mb-0">
+                  <i class="fas fa-lightbulb mr-2"></i>
+                  Personalized Feedback
+                </h5>
+              </div>
+              <div class="card-body">
+                <div id="feedback">--</div>
+              </div>
+            </div>
+
+            {{/* Strategy Summary */}}
+            <div class="card mt-3">
+              <div class="card-header">
+                <h5 class="card-title mb-0">
+                  <i class="fas fa-clipboard-list mr-2"></i>
+                  Strategy Summary
+                </h5>
+              </div>
+              <div class="card-body">
+                <div id="strategySummary">--</div>
+              </div>
+            </div>
+
+            {{/* New Analysis Button */}}
+            <div class="text-center mt-4">
+              <button class="btn btn-outline-primary" onclick="resetAnalysis()">
+                <i class="fas fa-plus mr-2"></i>
+                Analyze Another Reflection
+              </button>
+            </div>
+            
           </div>
 
-          <div id="results" style="display: none;"></div>
-        </div>
+          {{/* Error Section */}}
+          <div id="errorSection" class="alert alert-danger mt-4" style="display: none;">
+            <h5 class="alert-heading">
+              <i class="fas fa-exclamation-triangle mr-2"></i>
+              Analysis Error
+            </h5>
+            <p id="errorMessage">--</p>
+            <p class="mb-0">Please try again or check your internet connection.</p>
+          </div>
 
+        </div>
       </div>
     </div>
   </div>
 </article>
 
-{{/* JavaScript */}}
-<script src="/js/reflectify_hugo.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+{{/* Include Reflectify JavaScript */}}
+<script src="{{ "js/reflectify.js" | relURL }}"></script>
 
-{{/* Custom CSS */}}
-<style>
-.reflectify-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  border: none;
-  margin-bottom: 2rem;
-}
+{{/* Enhanced JavaScript with tooltips and sentence analysis */}}
+<script>
+// Strategy definitions for tooltips
+const strategyDefinitions = {
+  // Reflection Strategies
+  'Self-explanation': 'Explaining to yourself how new information relates to what you already know or how it relates to concepts within the information.',
+  'Elaborative interrogation': 'Generating explanations for why facts or concepts are true.',
+  'Critical analysis': 'Evaluating information by questioning assumptions, identifying biases, and assessing evidence quality.',
+  'Feelings reflection': 'Reflecting on emotional responses to learning experiences and how they impact understanding.',
+  'Outcome evaluation': 'Assessing the results and effectiveness of your learning or study session.',
+  'Personal connection': 'Connecting new information to personal experiences, beliefs, or prior knowledge.',
+  'Experience reflection': 'Thinking about past learning experiences and what worked or didn\'t work.',
+  'Perspective taking': 'Considering multiple viewpoints or approaches to understanding a concept.',
+  
+  // Study Strategies  
+  'Summarization': 'Creating concise summaries of key information to aid understanding and retention.',
+  'Rereading': 'Going back over material multiple times to reinforce learning (though not always most effective).',
+  'Interleaved practice': 'Mixing different types of problems or concepts during study sessions rather than focusing on one at a time.',
+  'Imagery for text': 'Creating mental images to help understand and remember textual information.',
+  'Keyword mnemonic': 'Using memorable words or phrases to help recall information.',
+  'Distributed practice': 'Spreading out study sessions over time rather than cramming (also known as spaced practice).',
+  'Practice testing': 'Testing yourself on material to improve retention and identify knowledge gaps.',
+  'Self-explanation': 'Explaining concepts to yourself in your own words to deepen understanding.',
+  'Highlighting/underlining': 'Marking important text passages (effectiveness varies by implementation).',
+  'Self-Explanation': 'Explaining to yourself how new information relates to what you already know or how it relates to concepts within the information.',
+  'Elaborative Interrogation': 'Generating explanations for why facts or concepts are true.',
+  'Critical Analysis': 'Evaluating information by questioning assumptions, identifying biases, and assessing evidence quality.',
+  'Feelings Reflection': 'Reflecting on emotional responses to learning experiences and how they impact understanding.',
+  'Outcome Evaluation': 'Assessing the results and effectiveness of your learning or study session.',
+  'Personal Connection': 'Connecting new information to personal experiences, beliefs, or prior knowledge.',
+  'Experience Reflection': 'Thinking about past learning experiences and what worked or didn\'t work.',
+  'Perspective Taking': 'Considering multiple viewpoints or approaches to understanding a concept.',
+  'Summarization': 'Creating concise summaries of key information to aid understanding and retention.',
+  'Rereading': 'Going back over material multiple times to reinforce learning (though not always most effective).',
+  'Interleaved Practice': 'Mixing different types of problems or concepts during study sessions rather than focusing on one at a time.',
+  'Imagery for Text': 'Creating mental images to help understand and remember textual information.',
+  'Keyword Mnemonic': 'Using memorable words or phrases to help recall information.',
+  'Distributed Practice': 'Spreading out study sessions over time rather than cramming (also known as spaced practice).',
+  'Practice Testing': 'Testing yourself on material to improve retention and identify knowledge gaps.',
+  'Highlighting/Underlining': 'Marking important text passages (effectiveness varies by implementation).'
+};
 
-.reflectify-header {
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  color: white;
-  padding: 1.5rem;
-  border-radius: 12px 12px 0 0;
-}
+// Progress management
+let progressTimeout = null;
 
-.reflectify-body {
-  padding: 2rem;
-}
-
-.form-control:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
-}
-
-.btn-primary {
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  border: none;
-}
-
-.btn-primary:hover {
-  background: linear-gradient(45deg, #5a67d8, #6b46c1);
-  transform: translateY(-1px);
-}
-
-.project-header {
-  margin-bottom: 2rem;
-}
-
-.project-links {
-  margin-top: 1rem;
-}
-
-.project-links .btn {
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-@media (max-width: 768px) {
-  .reflectify-body {
-    padding: 1rem;
+function showLoadingWithProgress() {
+  document.getElementById('progressOverlay').style.display = 'block';
+  document.getElementById('progressBarFill').style.width = '0%';
+  document.getElementById('progressMessage').textContent = 'Initializing analysis...';
+  
+  // Clear any existing timeout
+  if (progressTimeout) {
+    clearTimeout(progressTimeout);
+    progressTimeout = null;
   }
+}
+
+function hideLoadingProgress() {
+  document.getElementById('progressOverlay').style.display = 'none';
+  document.getElementById('progressBarFill').style.width = '0%';
+  
+  if (progressTimeout) {
+    clearTimeout(progressTimeout);
+    progressTimeout = null;
+  }
+}
+
+function simulateProgress() {
+  const reflection = document.getElementById('reflection').value.trim();
+  const sentences = reflection.split(/[.!?]+/).filter(s => s.trim().length > 10);
+  const sentenceCount = sentences.length;
+  
+  // Calculate dynamic timing based on sentence count
+  // Base time: ~4 seconds per sentence for OpenAI processing
+  // 22 sentences = 90 seconds, so ~4.1 seconds per sentence
+  const openaiTimePerSentence = 4100; // milliseconds
+  const baseOpenaiTime = Math.max(3000, sentenceCount * openaiTimePerSentence);
+  
+  const steps = [
+    { 
+      message: 'Preprocessing reflection text...', 
+      duration: 500, 
+      progress: 5 
+    },
+    { 
+      message: `Analyzing ${sentenceCount} sentences with GPT-4 (this will take ~${Math.round(baseOpenaiTime/1000)} seconds)...`, 
+      duration: baseOpenaiTime, 
+      progress: 70 
+    },
+    { 
+      message: 'Extracting metacognitive patterns...', 
+      duration: Math.max(800, sentenceCount * 50), 
+      progress: 80 
+    },
+    { 
+      message: 'Computing ML prediction...', 
+      duration: 600, 
+      progress: 87 
+    },
+    { 
+      message: 'Generating personalized feedback...', 
+      duration: Math.max(1500, sentenceCount * 100), 
+      progress: 95 
+    },
+    { 
+      message: 'Finalizing analysis...', 
+      duration: 300, 
+      progress: 100 
+    }
+  ];
+  
+  let currentStep = 0;
+  const totalEstimatedTime = steps.reduce((sum, step) => sum + step.duration, 0);
+  
+  // Show estimated time to user
+  const estimatedMinutes = Math.round(totalEstimatedTime / 60000 * 10) / 10;
+  if (estimatedMinutes > 1) {
+    document.getElementById('progressMessage').textContent = `Estimated analysis time: ${estimatedMinutes} minutes for ${sentenceCount} sentences`;
+    setTimeout(() => {
+      updateStep();
+    }, 2000);
+  } else {
+    updateStep();
+  }
+  
+  const updateStep = () => {
+    if (currentStep < steps.length) {
+      const step = steps[currentStep];
+      document.getElementById('progressMessage').textContent = step.message;
+      document.getElementById('progressBarFill').style.width = step.progress + '%';
+      
+      progressTimeout = setTimeout(() => {
+        currentStep++;
+        updateStep();
+      }, step.duration);
+    }
+  };
+}
+
+// Enhanced sentence analysis display
+function displaySentenceAnalysis(sentences) {
+  const container = document.getElementById('sentenceAnalysis');
+  container.innerHTML = '';
+  
+  if (!sentences || sentences.length === 0) {
+    container.innerHTML = '<p class="text-muted">No sentence analysis available.</p>';
+    return;
+  }
+  
+  sentences.forEach((sentence, index) => {
+    const sentenceDiv = document.createElement('div');
+    sentenceDiv.className = 'sentence-item mb-3 p-3 border rounded';
+    
+    // Create clickable strategy tags with tooltips
+    const createStrategyTags = (strategies, type) => {
+      if (strategies.length === 0) {
+        return '<span class="text-muted font-italic">None detected</span>';
+      }
+      
+      return strategies.map(strategy => {
+        const definition = strategyDefinitions[strategy] || strategyDefinitions[strategy.charAt(0).toUpperCase() + strategy.slice(1)] || 'Learning strategy identified in this sentence.';
+        const badgeClass = type === 'reflection' ? 'badge-success' : 'badge-primary';
+        return `<span class="badge ${badgeClass} mr-1 mb-1 strategy-tag" 
+                     data-toggle="tooltip" 
+                     data-placement="top" 
+                     title="${definition}"
+                     style="cursor: help; font-size: 0.75rem;">${strategy}</span>`;
+      }).join('');
+    };
+    
+    const reflStrategyTags = createStrategyTags(sentence.reflection_strategies || [], 'reflection');
+    const studyStrategyTags = createStrategyTags(sentence.study_strategies || [], 'study');
+    
+    sentenceDiv.innerHTML = `
+      <div class="d-flex align-items-start mb-2">
+        <span class="badge badge-primary mr-3 mt-1">${index + 1}</span>
+        <div class="flex-grow-1">
+          <div class="font-italic mb-2">"${sentence.sentence}"</div>
+        </div>
+      </div>
+      <div class="border-top pt-2">
+        <div class="row">
+          <div class="col-md-6 mb-2">
+            <div class="d-flex align-items-center mb-1">
+              <i class="fas fa-mirror text-success mr-2"></i>
+              <strong class="text-success">Reflection Strategies:</strong>
+            </div>
+            <div class="pl-3">${reflStrategyTags}</div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex align-items-center mb-1">
+              <i class="fas fa-book-open text-primary mr-2"></i>
+              <strong class="text-primary">Study Strategies:</strong>
+            </div>
+            <div class="pl-3">${studyStrategyTags}</div>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    container.appendChild(sentenceDiv);
+  });
+  
+  // Initialize tooltips
+  setTimeout(() => {
+    $('[data-toggle="tooltip"]').tooltip();
+  }, 100);
+}
+
+// Enhanced strategy summary with tooltips
+function formatStrategySummary(strategySummary) {
+  let html = '';
+  
+  if (strategySummary.reflection_strategies_found && strategySummary.reflection_strategies_found.length > 0) {
+    html += '<div class="mb-3"><h6>Reflection Strategies:</h6>';
+    strategySummary.reflection_strategies_found.forEach(strategy => {
+      const definition = strategyDefinitions[strategy] || strategyDefinitions[strategy.charAt(0).toUpperCase() + strategy.slice(1)] || 'Reflection strategy for metacognitive learning.';
+      html += `<span class="badge badge-success mr-1 mb-1 strategy-tag" 
+                   data-toggle="tooltip" 
+                   data-placement="top" 
+                   title="${definition}"
+                   style="cursor: help;">${strategy}</span>`;
+    });
+    html += '</div>';
+  }
+  
+  if (strategySummary.study_strategies_found && strategySummary.study_strategies_found.length > 0) {
+    html += '<div class="mb-3"><h6>Study Strategies:</h6>';
+    strategySummary.study_strategies_found.forEach(strategy => {
+      const definition = strategyDefinitions[strategy] || strategyDefinitions[strategy.charAt(0).toUpperCase() + strategy.slice(1)] || 'Evidence-based study technique for improving learning.';
+      html += `<span class="badge badge-primary mr-1 mb-1 strategy-tag" 
+                   data-toggle="tooltip" 
+                   data-placement="top" 
+                   title="${definition}"
+                   style="cursor: help;">${strategy}</span>`;
+    });
+    html += '</div>';
+  }
+  
+  if (html === '') {
+    html = '<p class="text-muted">No specific strategies detected in this reflection.</p>';
+  }
+  
+  // Initialize tooltips after a brief delay
+  setTimeout(() => {
+    $('[data-toggle="tooltip"]').tooltip();
+  }, 100);
+  
+  return html;
+}
+
+// Update probability display styling
+function updateProbabilityDisplay(probability) {
+  const element = document.getElementById('improvementProbability');
+  const value = parseFloat(probability);
+  
+  element.classList.remove('text-success', 'text-warning', 'text-danger');
+  
+  if (value >= 0.7) {
+    element.classList.add('text-success');
+  } else if (value >= 0.4) {
+    element.classList.add('text-warning'); 
+  } else {
+    element.classList.add('text-danger');
+  }
+}
+
+// Reset function
+function resetAnalysis() {
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('errorSection').style.display = 'none';
+  document.getElementById('reflection').value = '';
+  document.getElementById('reflection').focus();
+}
+</script>
+
+<style>
+/* Progress overlay */
+.progress-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(21, 101, 192, 0.95);
+  display: none;
+  z-index: 9999;
+  color: white;
+}
+
+.progress-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.progress-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+  margin: 0 auto 1.5rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.progress-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.progress-subtitle {
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
+
+.progress-bar-container {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  height: 8px;
+  width: 300px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4fc3f7, white);
+  border-radius: 20px;
+  transition: width 0.3s ease;
+  width: 0%;
+}
+
+/* Sentence analysis styling */
+.sentence-item {
+  background: #f8f9fa;
+  border-left: 4px solid #007bff;
+}
+
+.sentence-item:hover {
+  background: #e9ecef;
+  transition: background-color 0.3s ease;
+}
+
+/* Strategy tag styling with tooltips */
+.strategy-tag {
+  cursor: help;
+  transition: all 0.3s ease;
+}
+
+.strategy-tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom styles that complement Hugo Academic theme */
+#improvementProbability {
+  transition: color 0.3s ease;
+}
+
+.spinner-border {
+  width: 1rem;
+  height: 1rem;
+}
+
+.card-header.bg-primary {
+  background-color: #007bff !important;
+}
+
+.border-primary {
+  border-color: #007bff !important;
+}
+
+.text-primary {
+  color: #007bff !important;
+}
+
+/* Hover effects for interactive elements */
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+#reflection:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+}
+
+/* Academic tooltip styling */
+.tooltip .tooltip-inner {
+  background: #263238;
+  color: white;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  max-width: 300px;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.tooltip.bs-tooltip-top .arrow::before {
+  border-top-color: #263238;
+}
+
+.tooltip.bs-tooltip-bottom .arrow::before {
+  border-bottom-color: #263238;
+}
+
+.tooltip.bs-tooltip-left .arrow::before {
+  border-left-color: #263238;
+}
+
+.tooltip.bs-tooltip-right .arrow::before {
+  border-right-color: #263238;
 }
 </style>
 
-{{- end -}}
+{{ end }}
