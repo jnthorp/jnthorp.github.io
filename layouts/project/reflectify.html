@@ -35,7 +35,7 @@
     <div class="btn-links mb-3">
       {{ range .Params.links }}
         <a class="btn btn-outline-primary btn-page-header btn-sm" href="{{ .url | relURL }}" target="{{ if eq (substr .url 0 4) "http" }}{{ "_blank" }}{{ end }}">
-          {{ with .icon }}<i class="{{ .icon_pack }} fa-{{ . }} pr-1" aria-hidden="true"></i>{{ end }}
+          {{ if .icon }}<i class="{{ .icon_pack | default "fas" }} fa-{{ .icon }} pr-1" aria-hidden="true"></i>{{ end }}
           {{ .name }}
         </a>
       {{ end }}
