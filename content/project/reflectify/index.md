@@ -34,6 +34,11 @@ links:
   icon_pack: fas
   name: Try It
   url: "#reflectify-tool"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
 ---
 
 Reflectify is an **AI-powered research tool** that analyzes students' written reflections on their learning experiences to predict exam performance and provide personalized improvement strategies.
@@ -56,11 +61,9 @@ This tool bridges the gap between **metacognitive theory** and **practical appli
 
 <div id="reflectify-tool">
 
-<!-- Bootstrap CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-<!-- Main Analysis Interface -->
 <div class="card shadow-lg border-0 mb-5">
   <div class="card-header text-white" style="background: linear-gradient(45deg, #667eea, #764ba2);">
     <h3 class="card-title mb-0 d-flex align-items-center">
@@ -71,7 +74,6 @@ This tool bridges the gap between **metacognitive theory** and **practical appli
   </div>
   <div class="card-body p-4">
     
-    <!-- Instructions -->
     <div class="alert alert-info mb-4">
       <h6 class="alert-heading mb-2">
         <i class="fas fa-lightbulb me-2"></i>How to Write an Effective Reflection
@@ -94,7 +96,6 @@ This tool bridges the gap between **metacognitive theory** and **practical appli
       </div>
     </div>
 
-    <!-- Input Form -->
     <form id="reflectionForm" class="mb-4">
       <div class="mb-4">
         <label for="reflectionInput" class="form-label fw-semibold">
@@ -128,13 +129,11 @@ This tool bridges the gap between **metacognitive theory** and **practical appli
       </div>
     </form>
     
-    <!-- Error Display -->
     <div id="errorAlert" class="alert alert-danger" style="display: none;">
       <i class="fas fa-exclamation-triangle me-2"></i>
       <span id="errorMessage"></span>
     </div>
     
-    <!-- API Status -->
     <div class="text-center mt-3">
       <small class="text-muted">
         <i class="fas fa-server me-1"></i>
@@ -145,18 +144,14 @@ This tool bridges the gap between **metacognitive theory** and **practical appli
   </div>
 </div>
 
-<!-- Results Display (Initially Hidden) -->
 <div id="results" style="display: none;">
-  <!-- Results will be populated by JavaScript -->
 </div>
 
 </div>
 
-<!-- Include JavaScript -->
 <script src="/js/reflectify_hugo.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
-<!-- Custom CSS for Hugo Integration -->
 <style>
 .card-body {
   padding: 2rem;
@@ -183,8 +178,3 @@ This tool bridges the gap between **metacognitive theory** and **practical appli
   }
 }
 </style>
-
-<script>
-// This will be loaded from the external JavaScript file
-// API_URL is defined in reflectify_hugo.js
-</script>
