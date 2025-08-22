@@ -56,8 +56,6 @@ This tool bridges the gap between **metacognitive theory** and **practical appli
 
 ## Try Reflectify
 
-{{< load-photoswipe >}}
-
 <style>
 .reflectify-card {
   background: #fff;
