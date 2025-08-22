@@ -181,5 +181,5 @@ social:
 highlight_name: true
 ---
 
-Hi! I'm John. I'm a Lecturer in the Discipline of Psychology. I think a lot about how neural geometry supports human behavior and experiences. I care deeply about how we can apply these principles to the classroom. I've also played a lot of instruments in a lot of bands. These interests have left me with a very particular, somewhat non-sequitir set of skills and projects that I'd like to tell you about here.
+Hi! I'm John. I'm a Director of Undergraduate Studies and Lecturer in Psychology. I think a lot about how neural geometry supports human behavior and experiences. I care deeply about how we can apply these principles to the classroom. I've also played a lot of instruments in a lot of bands. These interests have left me with a very particular, somewhat non-sequitir set of skills and projects that I'd like to tell you about here.
 {style="text-align: center;"}
