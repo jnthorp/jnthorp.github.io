@@ -16,7 +16,12 @@ document.addEventListener('DOMContentLoaded', function() {
     return;
   }
   
-  form.addEventListener('submit', async function(e) {
+  form.addEventListener('submit',async function checkApiStatus() {
+  // API status element doesn't exist in current HTML layout
+  // This function is disabled to prevent null reference errors
+  console.log('API status check skipped - no apiStatus element in HTML');
+  return;
+}
     console.log('Form submitted!');
     e.preventDefault();
     
@@ -70,8 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Check API status on page load
-  checkApiStatus();
+  // API status check removed - no apiStatus element in HTML
 });
 
 function setLoadingState(loading) {
@@ -79,27 +83,37 @@ function setLoadingState(loading) {
   const icon = document.getElementById('analyzeIcon');
   const spinner = document.getElementById('loadingSpinner');
   
+  if (!button) {
+    console.error('analyzeBtn not found');
+    return;
+  }
+  
   if (loading) {
     button.disabled = true;
-    icon.style.display = 'none';
-    spinner.style.display = 'inline-block';
+    if (icon) icon.style.display = 'none';
+    if (spinner) spinner.style.display = 'inline-block';
     button.innerHTML = '<span class="spinner-border spinner-border-sm mr-2" role="status"></span>Analyzing...';
   } else {
     button.disabled = false;
-    icon.style.display = 'inline';
-    spinner.style.display = 'none';
+    if (icon) icon.style.display = 'inline';
+    if (spinner) spinner.style.display = 'none';
     button.innerHTML = '<i class="fas fa-microscope mr-2"></i>Analyze My Reflection';
   }
 }
 
 function showError(message) {
-  document.getElementById('errorMessage').textContent = message;
-  document.getElementById('errorSection').style.display = 'block';
-  document.getElementById('results').style.display = 'none';
+  const errorMessage = document.getElementById('errorMessage');
+  const errorSection = document.getElementById('errorSection');
+  const results = document.getElementById('results');
+  
+  if (errorMessage) errorMessage.textContent = message;
+  if (errorSection) errorSection.style.display = 'block';
+  if (results) results.style.display = 'none';
 }
 
 function hideError() {
-  document.getElementById('errorSection').style.display = 'none';
+  const errorSection = document.getElementById('errorSection');
+  if (errorSection) errorSection.style.display = 'none';
 }
 
 function resetForm() {
