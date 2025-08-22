@@ -34,11 +34,6 @@ links:
   icon_pack: fas
   name: Try It
   url: "#reflectify-tool"
-
-markup:
-  goldmark:
-    renderer:
-      unsafe: true
 ---
 
 Reflectify is an **AI-powered research tool** that analyzes students' written reflections on their learning experiences to predict exam performance and provide personalized improvement strategies.
@@ -59,21 +54,65 @@ This tool bridges the gap between **metacognitive theory** and **practical appli
 
 ---
 
-<div id="reflectify-tool">
+## Try Reflectify
+
+{{< load-photoswipe >}}
+
+<style>
+.reflectify-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: none;
+  margin-bottom: 2rem;
+}
+
+.reflectify-header {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 12px 12px 0 0;
+}
+
+.reflectify-body {
+  padding: 2rem;
+}
+
+.form-control:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #5a67d8, #6b46c1);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .reflectify-body {
+    padding: 1rem;
+  }
+}
+</style>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-<div class="card shadow-lg border-0 mb-5">
-  <div class="card-header text-white" style="background: linear-gradient(45deg, #667eea, #764ba2);">
-    <h3 class="card-title mb-0 d-flex align-items-center">
+<div id="reflectify-tool" class="reflectify-card">
+  <div class="reflectify-header">
+    <h3 class="mb-0 d-flex align-items-center">
       <i class="fas fa-microscope me-3"></i>
       Analyze Your Learning Reflection
     </h3>
     <small class="opacity-75 mt-2 d-block">Get AI-powered insights into your study strategies and exam performance potential</small>
   </div>
-  <div class="card-body p-4">
-    
+  
+  <div class="reflectify-body">
     <div class="alert alert-info mb-4">
       <h6 class="alert-heading mb-2">
         <i class="fas fa-lightbulb me-2"></i>How to Write an Effective Reflection
@@ -140,41 +179,10 @@ This tool bridges the gap between **metacognitive theory** and **practical appli
         API Status: <span id="apiStatus" class="badge bg-secondary">Checking...</span>
       </small>
     </div>
-    
   </div>
 </div>
 
-<div id="results" style="display: none;">
-</div>
-
-</div>
+<div id="results" style="display: none;"></div>
 
 <script src="/js/reflectify_hugo.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-
-<style>
-.card-body {
-  padding: 2rem;
-}
-
-.form-control:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
-}
-
-.btn-primary {
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  border: none;
-}
-
-.btn-primary:hover {
-  background: linear-gradient(45deg, #5a67d8, #6b46c1);
-  transform: translateY(-1px);
-}
-
-@media (max-width: 768px) {
-  .card-body {
-    padding: 1rem;
-  }
-}
-</style>
