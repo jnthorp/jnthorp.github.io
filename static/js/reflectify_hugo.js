@@ -1,6 +1,9 @@
 // Complete Reflectify JavaScript Implementation for Hugo Integration
 // This file contains all the functionality from test.html adapted for Hugo
 
+// Configuration - Update this URL when you deploy your API to Railway
+const API_URL = 'https://reflectify-api.up.railway.app'; // TODO: Update with your actual Railway URL
+
 // Main form submission handler
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('reflectionForm').addEventListener('submit', async function(e) {
@@ -18,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const startTime = performance.now();
     
     try {
-      const response = await fetch(`${API_URL}/predict`, {
+      const response = await fetch(`${API_URL}/api/analyze`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
