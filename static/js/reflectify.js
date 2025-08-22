@@ -6,10 +6,31 @@ const API_URL = 'https://reflectify-api.up.railway.app';
 
 // Main form submission handler
 document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('reflectionForm').addEventListener('submit', async function(e) {
+  console.log('DOM loaded, setting up form handler');
+  
+  const form = document.getElementById('reflectionForm');
+  console.log('Form element found:', form);
+  
+  if (!form) {
+    console.error('Form element not found!');
+    return;
+  }
+  
+  form.addEventListener('submit', async function(e) {
+    console.log('Form submitted!');
     e.preventDefault();
     
-    const reflection = document.getElementById('reflection').value.trim();
+    const reflectionInput = document.getElementById('reflection');
+    console.log('Reflection input found:', reflectionInput);
+    
+    if (!reflectionInput) {
+      console.error('Reflection input not found!');
+      return;
+    }
+    
+    const reflection = reflectionInput.value.trim();
+    console.log('Reflection text:', reflection);
+    
     if (!reflection) {
       showError('Please enter your learning reflection.');
       return;
@@ -57,29 +78,28 @@ function setLoadingState(loading) {
   const button = document.getElementById('analyzeBtn');
   const icon = document.getElementById('analyzeIcon');
   const spinner = document.getElementById('loadingSpinner');
-  const btnText = document.getElementById('btnText');
   
   if (loading) {
     button.disabled = true;
     icon.style.display = 'none';
     spinner.style.display = 'inline-block';
-    btnText.textContent = 'Analyzing...';
+    button.innerHTML = '<span class="spinner-border spinner-border-sm mr-2" role="status"></span>Analyzing...';
   } else {
     button.disabled = false;
     icon.style.display = 'inline';
     spinner.style.display = 'none';
-    btnText.textContent = 'Analyze My Reflection';
+    button.innerHTML = '<i class="fas fa-microscope mr-2"></i>Analyze My Reflection';
   }
 }
 
 function showError(message) {
   document.getElementById('errorMessage').textContent = message;
-  document.getElementById('errorAlert').style.display = 'block';
+  document.getElementById('errorSection').style.display = 'block';
   document.getElementById('results').style.display = 'none';
 }
 
 function hideError() {
-  document.getElementById('errorAlert').style.display = 'none';
+  document.getElementById('errorSection').style.display = 'none';
 }
 
 function resetForm() {
