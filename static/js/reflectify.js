@@ -16,12 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     return;
   }
   
-  form.addEventListener('submit',async function checkApiStatus() {
-  // API status element doesn't exist in current HTML layout
-  // This function is disabled to prevent null reference errors
-  console.log('API status check skipped - no apiStatus element in HTML');
-  return;
-}
+  form.addEventListener('submit', async function(e) {
     console.log('Form submitted!');
     e.preventDefault();
     
@@ -609,23 +604,4 @@ function initializeTooltips() {
   }
 }
 
-async function checkApiStatus() {
-  const statusElement = document.getElementById('apiStatus');
-  try {
-    const response = await fetch(`${API_URL}/health`, {
-      method: 'GET',
-      timeout: 5000
-    });
-    
-    if (response.ok) {
-      statusElement.textContent = 'Online';
-      statusElement.className = 'badge bg-success';
-    } else {
-      statusElement.textContent = 'Issues';
-      statusElement.className = 'badge bg-warning text-dark';
-    }
-  } catch (error) {
-    statusElement.textContent = 'Offline';
-    statusElement.className = 'badge bg-danger';
-  }
-}
+// checkApiStatus function removed - apiStatus element doesn't exist in HTML
