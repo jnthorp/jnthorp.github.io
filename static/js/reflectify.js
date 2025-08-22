@@ -528,17 +528,26 @@ function displayFeatureInsights(features) {
     let importanceClass = 'badge bg-secondary';
     let importanceText = 'Low';
     const shapImportance = f.shap_importance || 0;
+    const modelImportance = f.importance || 0;
     
-    if (shapImportance > 0.01) {
+    // Use SHAP importance if available, otherwise fall back to model importance
+    const effectiveImportance = shapImportance > 0 ? shapImportance : modelImportance;
+    // Update highImportance calculation to use effective importance
+    const isHighImportance = effectiveImportance > 0.05 || shapImportance > 0.005;
+    
+    if (effectiveImportance > 0.1 || shapImportance > 0.01) {
       importanceClass = 'badge bg-danger';
       importanceText = 'High';
-    } else if (shapImportance > 0.005) {
+    } else if (effectiveImportance > 0.05 || shapImportance > 0.005) {
       importanceClass = 'badge bg-warning text-dark';
       importanceText = 'Medium';
+    } else if (effectiveImportance > 0.01) {
+      importanceClass = 'badge bg-info text-dark';
+      importanceText = 'Low-Med';
     }
     
     let flag = '';
-    if (highImportance && lowValue) {
+    if (isHighImportance && lowValue) {
       if (f.improvement_direction === 'increase') {
         flag = ' <span title="⚠️ Missing Opportunity: Important feature barely present in your reflection" style="color: #ff9800; font-size:1.1em;">⚠️</span>';
       } else {
@@ -562,11 +571,12 @@ function displayFeatureInsights(features) {
                 data-bs-toggle="tooltip" 
                 data-bs-placement="top" 
                 data-bs-title="${def.desc}" 
-                style="font-size: 0.85em; border: none; background: none; text-align: left;">${def.name}${flag}</button>
+                style="font-size: 0.85em;">${def.name}${flag}</button>
       </td>
       <td>
         <span class="${importanceClass}">${importanceText}</span>
-        ${shapImportance > 0 ? `<br><small class="text-info">SHAP: ${shapImportance.toFixed(3)}</small>` : ''}
+        ${shapImportance > 0 ? `<br><small class="text-info">SHAP: ${shapImportance.toFixed(3)}</small>` : 
+          `<br><small class="text-muted">Model: ${modelImportance.toFixed(3)}</small>`}
       </td>
       <td>${f.value.toFixed(2)}</td>
       <td>
