@@ -1,0 +1,121 @@
+{{/* Simplified Reflectify template that uses Hugo Blox default footer */}}
+{{ define "main" }}
+
+<article class="article">
+  <div class="article-container pt-3">
+    <h1>{{ .Title }}</h1>
+    
+    {{ with .Params.summary }}
+    <p class="page-subtitle">{{ . }}</p>
+    {{ end }}
+
+    {{/* Tags */}}
+    {{ if .Params.tags }}
+    <div class="article-metadata">
+      {{ range .Params.tags }}
+        <a href="{{ (site.GetPage "tags").RelPermalink }}{{ . | urlize }}" class="badge badge-light">{{ . }}</a>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{/* Project links */}}
+    {{ if .Params.links }}
+    <div class="btn-links mb-3">
+      {{ range .Params.links }}
+        <a class="btn btn-outline-primary btn-page-header btn-sm" href="{{ .url | relURL }}" target="{{ if eq (substr .url 0 4) "http" }}{{ "_blank" }}{{ end }}">
+          {{ if .icon }}<i class="{{ .icon_pack | default "fas" }} fa-{{ .icon }} pr-1" aria-hidden="true"></i>{{ end }}
+          {{ .name }}
+        </a>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{/* Project description content */}}
+    <div class="article-style">
+      {{ .Content }}
+    </div>
+
+    {{/* Interactive Reflectify Tool */}}
+    <div class="mt-5">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title mb-0">
+            <i class="fas fa-brain text-primary mr-2"></i>
+            Try Reflectify
+          </h3>
+          <p class="text-muted mt-2 mb-0">Interactive AI-powered reflection analysis</p>
+        </div>
+        <div class="card-body">
+          
+          {{/* Reflection Guidance */}}
+          <div class="alert alert-info mb-4">
+            <h6 class="alert-heading mb-3">
+              <i class="fas fa-lightbulb mr-2"></i>How to Write an Effective Reflection
+            </h6>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <ul class="mb-0">
+                  <li class="mb-2"><strong>Study Strategies:</strong> Describe your specific learning methods</li>
+                  <li class="mb-2"><strong>Challenges:</strong> What difficulties did you encounter?</li>
+                  <li><strong>Emotions:</strong> How did you feel about the material?</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul class="mb-0">
+                  <li class="mb-2"><strong>Past Experiences:</strong> Connect to previous knowledge</li>
+                  <li class="mb-2"><strong>Multiple Perspectives:</strong> Consider different approaches</li>
+                  <li><strong>Critical Analysis:</strong> Question and evaluate your approach</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {{/* Input Form */}}
+          <form id="reflectionForm">
+            <div class="form-group">
+              <label for="reflection" class="font-weight-bold">Your Study Reflection</label>
+              <textarea class="form-control" id="reflection" name="reflection" rows="6" placeholder="Share your thoughts about your recent study session. What strategies did you use? What worked well? What challenges did you face?" required></textarea>
+              <small class="form-text text-muted">Minimum 50 characters required for analysis.</small>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-lg" id="analyzeBtn">
+              <span class="spinner-border spinner-border-sm mr-2" role="status" id="loadingSpinner" style="display: none;"></span>
+              <i class="fas fa-microscope mr-2" id="analyzeIcon"></i>
+              Analyze My Reflection
+            </button>
+          </form>
+
+          {{/* Results Section */}}
+          <div id="results" class="mt-4" style="display: none;">
+            <!-- Results will be populated by JavaScript -->
+          </div>
+
+          {{/* Error Section */}}
+          <div id="errorSection" class="alert alert-danger mt-4" style="display: none;">
+            <h5 class="alert-heading">Analysis Error</h5>
+            <p id="errorMessage">--</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+{{/* Include Reflectify JavaScript */}}
+<script src="{{ "js/reflectify.js" | relURL }}"></script>
+
+<style>
+/* Minimal custom styles - let Hugo Blox handle everything else */
+#reflection:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+}
+</style>
+
+{{ end }}
