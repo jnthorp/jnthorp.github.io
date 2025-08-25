@@ -3,6 +3,7 @@ title: "Reflectify"
 summary: "AI-powered learning reflection analyzer that predicts exam performance and provides personalized improvement strategies."
 date: 2025-01-21
 type: project
+layout: reflectify
 
 # Featured image
 image:
@@ -47,84 +48,3 @@ Built using **natural language processing**, **machine learning**, and **SHAP ex
 ## 📊 Educational Impact
 
 This tool bridges the gap between **metacognitive theory** and **practical application**, helping students develop more effective reflection practices through data-driven insights.
-
-## 🧠 Try Reflectify
-
-<div class="mt-5">
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title mb-0">
-        <i class="fas fa-brain text-primary mr-2"></i>
-        Interactive AI-Powered Reflection Analysis
-      </h3>
-      <p class="text-muted mt-2 mb-0">Get personalized insights into your study strategies</p>
-    </div>
-    <div class="card-body">
-      
-      <!-- Reflection Guidance -->
-      <div class="alert alert-info mb-4">
-        <h6 class="alert-heading mb-3">
-          <i class="fas fa-lightbulb mr-2"></i>How to Write an Effective Reflection
-        </h6>
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <ul class="mb-0">
-              <li class="mb-2"><strong>Study Strategies:</strong> Describe your specific learning methods</li>
-              <li class="mb-2"><strong>Challenges:</strong> What difficulties did you encounter?</li>
-              <li><strong>Emotions:</strong> How did you feel about the material?</li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <ul class="mb-0">
-              <li class="mb-2"><strong>Past Experiences:</strong> Connect to previous knowledge</li>
-              <li class="mb-2"><strong>Multiple Perspectives:</strong> Consider different approaches</li>
-              <li><strong>Critical Analysis:</strong> Question and evaluate your approach</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Input Form -->
-      <form id="reflectionForm">
-        <div class="form-group">
-          <label for="reflection" class="font-weight-bold">Your Study Reflection</label>
-          <textarea class="form-control" id="reflection" name="reflection" rows="6" placeholder="Share your thoughts about your recent study session. What strategies did you use? What worked well? What challenges did you face?" required></textarea>
-          <small class="form-text text-muted">Minimum 50 characters required for analysis.</small>
-        </div>
-        
-        <button type="submit" class="btn btn-primary btn-lg" id="analyzeBtn">
-          <span class="spinner-border spinner-border-sm mr-2" role="status" id="loadingSpinner" style="display: none;"></span>
-          <i class="fas fa-microscope mr-2" id="analyzeIcon"></i>
-          Analyze My Reflection
-        </button>
-      </form>
-
-      <!-- Results Section -->
-      <div id="results" class="mt-4" style="display: none;">
-        <!-- Results will be populated by JavaScript -->
-      </div>
-
-      <!-- Error Section -->
-      <div id="errorSection" class="alert alert-danger mt-4" style="display: none;">
-        <h5 class="alert-heading">Analysis Error</h5>
-        <p id="errorMessage">--</p>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<script src="/js/reflectify.js"></script>
-
-<style>
-/* Custom styles for Reflectify tool */
-#reflection:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
-}
-
-.card:hover {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s ease;
-}
-</style>
