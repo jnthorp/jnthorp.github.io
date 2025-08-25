@@ -659,6 +659,100 @@ function resetAnalysis() {
 .tooltip.bs-tooltip-right .arrow::before {
   border-right-color: #263238;
 }
+
+/* Footer styling */
+.share-buttons .btn {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.share-buttons .btn:hover {
+  transform: translateY(-2px);
+  color: #007bff !important;
+}
+
+.author-card {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.author-avatar img {
+  transition: transform 0.3s ease;
+}
+
+.author-avatar img:hover {
+  transform: scale(1.05);
+}
+
+.footer-content {
+  margin-top: 2rem;
+}
+
+.footer-content a {
+  transition: color 0.3s ease;
+}
+
+.footer-content a:hover {
+  color: #007bff !important;
+  text-decoration: none;
+}
 </style>
+
+{{/* Project Footer - matching other project pages */}}
+<div class="container-fluid pt-4 pb-3">
+  <div class="row">
+    <div class="col-12">
+      
+      {{/* Social Sharing */}}
+      <div class="d-flex justify-content-center">
+        <div class="share-buttons">
+          <a href="https://twitter.com/intent/tweet?url={{ .Permalink }}&text={{ .Title | urlquery }}" target="_blank" class="btn btn-link text-primary p-2" title="Share on Twitter">
+            <i class="fab fa-twitter fa-lg"></i>
+          </a>
+          <a href="https://www.facebook.com/sharer.php?u={{ .Permalink }}&t={{ .Title | urlquery }}" target="_blank" class="btn btn-link text-primary p-2" title="Share on Facebook">
+            <i class="fab fa-facebook fa-lg"></i>
+          </a>
+          <a href="mailto:?subject={{ .Title | urlquery }}&body={{ .Permalink }}" class="btn btn-link text-primary p-2" title="Share by Email">
+            <i class="fas fa-envelope fa-lg"></i>
+          </a>
+          <a href="https://www.linkedin.com/shareArticle?url={{ .Permalink }}&title={{ .Title | urlquery }}" target="_blank" class="btn btn-link text-primary p-2" title="Share on LinkedIn">
+            <i class="fab fa-linkedin fa-lg"></i>
+          </a>
+        </div>
+      </div>
+
+      {{/* Author Bio Section */}}
+      <div class="author-card text-center mt-4 mb-4">
+        <div class="author-avatar mb-3">
+          <img src="{{ "/authors/admin/avatar_hu7e5eedbc1df66f7e779d21c0cddd0604_757168_270x270_fill_q75_lanczos_center.jpg" | relURL }}" 
+               alt="John Thorp, Ph.D." 
+               class="rounded-circle" 
+               style="width: 120px; height: 120px;">
+        </div>
+        <h5><a href="{{ "/" | relURL }}" class="text-decoration-none">John Thorp, Ph.D.</a></h5>
+        <h6 class="text-muted mb-2">Director of Undergraduate Studies; Lecturer</h6>
+        <p class="text-muted small">
+          John Thorp is a cognitive neuroscientist and musician interested in how information is encoded and consolidated across distributed systems.
+        </p>
+      </div>
+
+      {{/* Footer Links and Attribution */}}
+      <div class="footer-content text-center border-top pt-4">
+        <div class="row">
+          <div class="col-12">
+            <p class="small text-muted mb-2">
+              © {{ now.Year }} John Thorp
+            </p>
+            <p class="small text-muted mb-0">
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" target="_blank" class="text-muted">Creative Commons</a> | 
+              Published with <a href="https://hugoblox.com/?utm_campaign=poweredby" target="_blank" class="text-muted">Hugo Blox Builder</a> — 
+              the free, <a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" class="text-muted">open source</a> website builder that empowers creators.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 {{ end }}
