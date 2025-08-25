@@ -661,23 +661,19 @@ function resetAnalysis() {
   border-right-color: #263238;
 }
 
-/* Hugo Blox style footer elements */
-.article-widget {
-  padding-top: 1rem;
-}
-
-.content-widget-hr {
-  border-top: 1px solid #e9ecef;
-  padding-top: 1rem;
-  margin-top: 1rem;
+/* Hugo Blox style footer elements - exact match */
+.share-box {
+  text-align: center;
+  margin: 1rem 0 2rem;
 }
 
 .share ul {
-  display: flex;
+  display: inline-flex;
   list-style: none;
   padding: 0;
   margin: 0;
   gap: 0.5rem;
+  justify-content: center;
 }
 
 .share li {
@@ -688,14 +684,14 @@ function resetAnalysis() {
   display: inline-block;
   width: 2.5rem;
   height: 2.5rem;
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
+  background-color: #6c757d;
   border-radius: 50%;
   text-align: center;
-  line-height: 2.3rem;
-  color: #6c757d;
-  transition: all 0.3s;
+  line-height: 2.5rem;
+  color: #fff;
+  transition: background-color 0.3s;
   text-decoration: none;
+  font-size: 1.1rem;
 }
 
 .share a:hover {
@@ -703,92 +699,305 @@ function resetAnalysis() {
   text-decoration: none;
 }
 
-.share-btn-twitter:hover { background-color: #1da1f2; border-color: #1da1f2; }
-.share-btn-facebook:hover { background-color: #3b5998; border-color: #3b5998; }
-.share-btn-email:hover { background-color: #6c757d; border-color: #6c757d; }
-.share-btn-linkedin:hover { background-color: #0077b5; border-color: #0077b5; }
+.share-btn-twitter { background-color: #6c757d; }
+.share-btn-facebook { background-color: #6c757d; }
+.share-btn-email { background-color: #6c757d; }
+.share-btn-linkedin { background-color: #6c757d; }
+.share-btn-whatsapp { background-color: #6c757d; }
+.share-btn-weibo { background-color: #6c757d; }
+
+.share-btn-twitter:hover { background-color: #1da1f2; }
+.share-btn-facebook:hover { background-color: #3b5998; }
+.share-btn-email:hover { background-color: #6c757d; }
+.share-btn-linkedin:hover { background-color: #0077b5; }
+.share-btn-whatsapp:hover { background-color: #25d366; }
+.share-btn-weibo:hover { background-color: #e6162d; }
+
+/* Author card styling */
+.author-card {
+  border-top: 1px solid #e9ecef;
+  padding-top: 2rem;
+  margin-top: 2rem;
+}
+
+.author-card .avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.author-card .card-title {
+  margin-bottom: 0.25rem;
+  font-size: 1.25rem;
+}
+
+.author-card .card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.author-card .card-subtitle {
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.author-card .card-text {
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.author-card .network-icon {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.author-card .network-icon li {
+  display: inline-block;
+}
+
+.author-card .network-icon a {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  text-align: center;
+  line-height: 1.5rem;
+  color: #007bff;
+  font-size: 0.875rem;
+}
+
+.author-card .network-icon a:hover {
+  color: #0056b3;
+}
+
+/* Site footer styling */
+.site-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.site-footer .powered-by {
+  font-size: 0.75rem;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+}
+
+.site-footer .powered-by a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.site-footer .powered-by a:hover {
+  text-decoration: underline;
+}
+
+/* Article widget styling */
+.article-widget {
+  margin-bottom: 1rem;
+}
+
+.content-widget-hr {
+  border-top: 1px solid #e9ecef;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
 
 .article-tags .badge {
   margin-right: 0.25rem;
   margin-bottom: 0.25rem;
+  background-color: #e9ecef;
+  color: #495057;
+  text-decoration: none;
+}
+
+.article-tags .badge:hover {
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
 }
 </style>
 
-{{/* Project Footer - matching Hugo Blox standard project pages */}}
-<div class="article-widget content-widget-hr">
-  <h3>Related</h3>
-  <ul class="list-unstyled">
-    {{ $related := .Site.RegularPages.Related . | first 5 }}
-    {{ with $related }}
-    {{ range . }}
-    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-    {{ end }}
-    {{ end }}
+{{/* Project Footer - matching exact Hugo Blox project page format */}}
+
+{{/* Social sharing at top of footer */}}
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a href="https://twitter.com/intent/tweet?url={{ .Permalink | absURL }}&text={{ .Title }}" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer.php?u={{ .Permalink | absURL }}" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+        <i class="fab fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a href="mailto:?subject={{ .Title }}&body={{ .Permalink | absURL }}" target="_self" rel="noopener" class="share-btn-email" aria-label="email">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink | absURL }}" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a href="https://web.whatsapp.com/send?text={{ .Title }} {{ .Permalink | absURL }}" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </li>
+    <li>
+      <a href="https://service.weibo.com/share/share.php?url={{ .Permalink | absURL }}&title={{ .Title }}" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
   </ul>
 </div>
 
-{{ $show_comments := and site.Params.features.comment.provider site.Params.features.comment.commentable.project (ne .Params.commentable false) }}
-{{ if $show_comments }}
-<div class="article-widget content-widget-hr">
-  <h3>Comments</h3>
-  {{ if site.Params.features.comment.provider }}
-  <div id="comments"></div>
-  {{ end }}
-</div>
-{{ end }}
-
-<div class="article-widget content-widget-hr">
-  <div class="d-flex">
-    <div>
-      Last updated
-    </div>
-    <div class="ml-auto">
-      <time datetime="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
-        {{ .Lastmod.Format "Jan 2, 2006" }}
-      </time>
-    </div>
-  </div>
-</div>
-
-{{/* Tags */}}
-{{ if .Params.tags }}
-<div class="article-widget content-widget-hr">
-  <h3>Tags</h3>
-  <div class="article-tags">
-    {{ range .Params.tags }}
-      <a class="badge badge-light" href="{{ (site.GetPage "tags").RelPermalink }}{{ . | urlize }}">{{ . }}</a>
-    {{ end }}
-  </div>
-</div>
-{{ end }}
-
-{{/* Share buttons */}}
-<div class="article-widget content-widget-hr">
-  <h3>Share</h3>
-  <div class="share-box" aria-hidden="true">
-    <ul class="share">
+{{/* Author profile section */}}
+<div class="media author-card content-widget-hr">
+  <a href="{{ "/" | relURL }}"><img class="avatar mr-3 avatar-circle" src="{{ "/authors/admin/avatar.jpg" | relURL }}" alt="John Thorp, Ph.D."></a>
+  <div class="media-body">
+    <h5 class="card-title"><a href="{{ "/" | relURL }}">John Thorp, Ph.D.</a></h5>
+    <h6 class="card-subtitle mb-2 text-muted">Directory of Undergraduate Studies; Lecturer</h6>
+    <p class="card-text">John Thorp is a cognitive neuroscientist and musician interested in how information is encoded and consolidated across distributed systems.</p>
+    <ul class="network-icon" aria-hidden="true">
       <li>
-        <a href="https://twitter.com/intent/tweet?url={{ .Permalink | absURL }}&text={{ .Title }}" target="_blank" rel="noopener" class="share-btn-twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a href="https://www.facebook.com/sharer.php?u={{ .Permalink | absURL }}" target="_blank" rel="noopener" class="share-btn-facebook">
-          <i class="fab fa-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a href="mailto:?subject={{ .Title }}&body={{ .Permalink | absURL }}" target="_self" rel="noopener" class="share-btn-email">
+        <a href="/#contact" aria-label="envelope">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
       <li>
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink | absURL }}" target="_blank" rel="noopener" class="share-btn-linkedin">
-          <i class="fab fa-linkedin-in"></i>
+        <a href="https://scholar.google.com/citations?user=2MbUs34AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" aria-label="google-scholar">
+          <i class="ai ai-google-scholar"></i>
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/jnthorp" target="_blank" rel="noopener" aria-label="github">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/john-thorp-713256252/" target="_blank" rel="noopener" aria-label="linkedin">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+      <li>
+        <a href="/uploads/resume.pdf" target="_blank" rel="noopener" aria-label="cv">
+          <i class="ai ai-cv"></i>
         </a>
       </li>
     </ul>
   </div>
+</div>
+
+{{/* Copyright and attribution footer */}}
+<div class="container">
+  <footer class="site-footer">
+    <p class="powered-by text-center">
+      © 2025 John Thorp
+      
+      <span class="float-right" aria-hidden="true">
+        <a href="#" class="back-to-top">
+          <span class="button_icon">
+            <i class="fas fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+    </p>
+
+    <p class="powered-by text-center">
+      <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" target="_blank" rel="noopener"><i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i></a>
+      <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" target="_blank" rel="noopener"><i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i></a>
+      
+      <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" target="_blank" rel="noopener"><i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i></a>
+      
+      <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" target="_blank" rel="noopener"><i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i></a>
+      
+      <a href="https://netlify.com" target="_blank" rel="noopener"><img src="/img/netlify-color-accent.svg" alt="Deploys by Netlify" height="20"></a>
+    </p>
+
+    <p class="powered-by text-center">
+      Published with <a href="https://hugoblox.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Hugo Blox Builder</a> — 
+      the free, <a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    </p>
+  </footer>
+</div>
+
+<div class="container">
+  <footer class="site-footer">
+    {{/* Related */}}
+    <div class="article-widget content-widget-hr">
+      <h3>Related</h3>
+      <ul>
+        {{ $related := .Site.RegularPages.Related . | first 4 }}
+        {{ with $related }}
+        {{ range . }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{ end }}
+        {{ end }}
+      </ul>
+    </div>
+
+    {{/* Last updated */}}
+    <div class="article-widget content-widget-hr">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          Last updated
+        </div>
+        <div class="col-12 col-md-6 text-md-right">
+          <time datetime="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+            {{ .Lastmod.Format "Jan 2, 2006" }}
+          </time>
+        </div>
+      </div>
+    </div>
+
+    {{/* Tags */}}
+    {{ if .Params.tags }}
+    <div class="article-widget content-widget-hr">
+      <h3>Tags</h3>
+      <div class="article-tags">
+        {{ range .Params.tags }}
+          <a class="badge badge-light" href="{{ (site.GetPage "tags").RelPermalink }}{{ . | urlize }}">{{ . }}</a>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+    {{/* Share */}}
+    <div class="article-widget content-widget-hr">
+      <h3>Share</h3>
+      <div class="share-box" aria-hidden="true">
+        <ul class="share">
+          <li>
+            <a href="https://twitter.com/intent/tweet?url={{ .Permalink | absURL }}&text={{ .Title }}" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/sharer.php?u={{ .Permalink | absURL }}" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:?subject={{ .Title }}&body={{ .Permalink | absURL }}" target="_self" rel="noopener" class="share-btn-email" aria-label="email">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink | absURL }}" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
 </div>
 
 {{ end }}
