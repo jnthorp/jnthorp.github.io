@@ -373,8 +373,11 @@ function formatStrategySummary(strategySummary) {
       const displayName = formatStrategyName(strategy);
       html += `<span class="badge bg-success me-1 mb-1 strategy-tag" 
                    data-bs-toggle="tooltip" 
+                   data-toggle="tooltip"
                    data-bs-placement="top" 
-                   data-bs-title="${definition}">${displayName}</span>`;
+                   data-placement="top"
+                   data-bs-title="${definition}"
+                   title="${definition}">${displayName}</span>`;
     });
     html += '</div>';
   }
@@ -386,8 +389,11 @@ function formatStrategySummary(strategySummary) {
       const displayName = formatStrategyName(strategy);
       html += `<span class="badge bg-primary me-1 mb-1 strategy-tag" 
                    data-bs-toggle="tooltip" 
+                   data-toggle="tooltip"
                    data-bs-placement="top" 
-                   data-bs-title="${definition}">${displayName}</span>`;
+                   data-placement="top"
+                   data-bs-title="${definition}"
+                   title="${definition}">${displayName}</span>`;
     });
     html += '</div>';
   }
@@ -646,8 +652,11 @@ function displaySentenceAnalysis(sentences) {
         const badgeClass = type === 'reflection' ? 'bg-success' : 'bg-primary';
         return `<span class="badge ${badgeClass} me-1 mb-1" 
                      data-bs-toggle="tooltip" 
+                     data-toggle="tooltip"
                      data-bs-placement="top" 
+                     data-placement="top"
                      data-bs-title="${definition}"
+                     title="${definition}"
                      style="font-size: 0.7rem;">${displayName}</span>`;
       }).join('');
     };
@@ -694,14 +703,50 @@ function displaySentenceAnalysis(sentences) {
 }
 
 function initializeTooltips() {
-  // Initialize Bootstrap tooltips
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-  if (window.bootstrap) {
+  // Initialize Bootstrap tooltips with fallback for different Bootstrap versions
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"], [data-toggle="tooltip"]');
+  
+  // Try Bootstrap 5 first
+  if (window.bootstrap && window.bootstrap.Tooltip) {
     tooltipTriggerList.forEach(tooltipTriggerEl => {
-      new window.bootstrap.Tooltip(tooltipTriggerEl, {
-        customClass: 'academic-tooltip'
-      });
+      // Update data attributes for consistency
+      if (tooltipTriggerEl.hasAttribute('data-bs-toggle')) {
+        new window.bootstrap.Tooltip(tooltipTriggerEl, {
+          customClass: 'academic-tooltip'
+        });
+      }
     });
+    console.log('Bootstrap 5 tooltips initialized');
+  } 
+  // Fallback to Bootstrap 4 or jQuery tooltips
+  else if (window.$ && window.$.fn.tooltip) {
+    // Convert Bootstrap 5 attributes to Bootstrap 4
+    tooltipTriggerList.forEach(tooltipTriggerEl => {
+      if (tooltipTriggerEl.hasAttribute('data-bs-title')) {
+        const title = tooltipTriggerEl.getAttribute('data-bs-title');
+        tooltipTriggerEl.setAttribute('title', title);
+        tooltipTriggerEl.setAttribute('data-toggle', 'tooltip');
+        tooltipTriggerEl.setAttribute('data-placement', 
+          tooltipTriggerEl.getAttribute('data-bs-placement') || 'top');
+      }
+    });
+    
+    // Initialize jQuery/Bootstrap 4 tooltips
+    window.$('[data-toggle="tooltip"]').tooltip({
+      customClass: 'academic-tooltip'
+    });
+    console.log('Bootstrap 4/jQuery tooltips initialized');
+  }
+  else {
+    console.warn('Neither Bootstrap 5 nor jQuery tooltips available');
+    // Fallback to native tooltips using title attribute
+    tooltipTriggerList.forEach(tooltipTriggerEl => {
+      if (tooltipTriggerEl.hasAttribute('data-bs-title')) {
+        const title = tooltipTriggerEl.getAttribute('data-bs-title');
+        tooltipTriggerEl.setAttribute('title', title);
+      }
+    });
+    console.log('Using native title tooltips as fallback');
   }
 }
 
