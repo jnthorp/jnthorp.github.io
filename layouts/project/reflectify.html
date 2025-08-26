@@ -105,6 +105,203 @@
 {{/* Include Reflectify JavaScript */}}
 <script src="{{ "js/reflectify.js" | relURL }}"></script>
 
+{{/* Enhanced JavaScript with tooltips and strategy definitions */}}
+<script>
+// Strategy definitions for tooltips
+const strategyDefinitions = {
+  // Reflection Strategies
+  'Self-explanation': 'Explaining to yourself how new information relates to what you already know or how it relates to concepts within the information.',
+  'Elaborative interrogation': 'Generating explanations for why facts or concepts are true.',
+  'Critical analysis': 'Evaluating information by questioning assumptions, identifying biases, and assessing evidence quality.',
+  'Feelings reflection': 'Reflecting on emotional responses to learning experiences and how they impact understanding.',
+  'Outcome evaluation': 'Assessing the results and effectiveness of your learning or study session.',
+  'Personal connection': 'Connecting new information to personal experiences, beliefs, or prior knowledge.',
+  'Experience reflection': 'Thinking about past learning experiences and what worked or didn\'t work.',
+  'Perspective taking': 'Considering multiple viewpoints or approaches to understanding a concept.',
+  
+  // Study Strategies  
+  'Summarization': 'Creating concise summaries of key information to aid understanding and retention.',
+  'Rereading': 'Going back over material multiple times to reinforce learning (though not always most effective).',
+  'Interleaved practice': 'Mixing different types of problems or concepts during study sessions rather than focusing on one at a time.',
+  'Imagery for text': 'Creating mental images to help understand and remember textual information.',
+  'Keyword mnemonic': 'Using memorable words or phrases to help recall information.',
+  'Distributed practice': 'Spreading out study sessions over time rather than cramming (also known as spaced practice).',
+  'Practice testing': 'Testing yourself on material to improve retention and identify knowledge gaps.',
+  'Highlighting/underlining': 'Marking important text passages (effectiveness varies by implementation).',
+  
+  // Capitalized versions for consistency
+  'Self-Explanation': 'Explaining to yourself how new information relates to what you already know or how it relates to concepts within the information.',
+  'Elaborative Interrogation': 'Generating explanations for why facts or concepts are true.',
+  'Critical Analysis': 'Evaluating information by questioning assumptions, identifying biases, and assessing evidence quality.',
+  'Feelings Reflection': 'Reflecting on emotional responses to learning experiences and how they impact understanding.',
+  'Outcome Evaluation': 'Assessing the results and effectiveness of your learning or study session.',
+  'Personal Connection': 'Connecting new information to personal experiences, beliefs, or prior knowledge.',
+  'Experience Reflection': 'Thinking about past learning experiences and what worked or didn\'t work.',
+  'Perspective Taking': 'Considering multiple viewpoints or approaches to understanding a concept.',
+  'Summarization': 'Creating concise summaries of key information to aid understanding and retention.',
+  'Rereading': 'Going back over material multiple times to reinforce learning (though not always most effective).',
+  'Interleaved Practice': 'Mixing different types of problems or concepts during study sessions rather than focusing on one at a time.',
+  'Imagery for Text': 'Creating mental images to help understand and remember textual information.',
+  'Keyword Mnemonic': 'Using memorable words or phrases to help recall information.',
+  'Distributed Practice': 'Spreading out study sessions over time rather than cramming (also known as spaced practice).',
+  'Practice Testing': 'Testing yourself on material to improve retention and identify knowledge gaps.',
+  'Highlighting/Underlining': 'Marking important text passages (effectiveness varies by implementation).'
+};
+
+// Enhanced sentence analysis display with tooltips
+function displaySentenceAnalysis(sentences) {
+  const container = document.getElementById('results');
+  if (!container) return;
+  
+  let html = `
+    <div class="card mt-4">
+      <div class="card-header">
+        <h5 class="card-title mb-0">
+          <i class="fas fa-search-plus mr-2"></i>
+          Sentence-by-Sentence Analysis
+        </h5>
+      </div>
+      <div class="card-body">
+  `;
+  
+  if (!sentences || sentences.length === 0) {
+    html += '<p class="text-muted">No sentence analysis available.</p>';
+  } else {
+    sentences.forEach((sentence, index) => {
+      const createStrategyTags = (strategies, type) => {
+        if (!strategies || strategies.length === 0) {
+          return '<span class="text-muted font-italic">None detected</span>';
+        }
+        
+        return strategies.map(strategy => {
+          const definition = strategyDefinitions[strategy] || 
+                           strategyDefinitions[strategy.charAt(0).toUpperCase() + strategy.slice(1)] || 
+                           'Learning strategy identified in this sentence.';
+          const badgeClass = type === 'reflection' ? 'badge-success' : 'badge-primary';
+          return `<span class="badge ${badgeClass} mr-1 mb-1 strategy-tag" 
+                       title="${definition}"
+                       style="cursor: help; font-size: 0.75rem;">${strategy}</span>`;
+        }).join('');
+      };
+      
+      const reflStrategyTags = createStrategyTags(sentence.reflection_strategies || [], 'reflection');
+      const studyStrategyTags = createStrategyTags(sentence.study_strategies || [], 'study');
+      
+      html += `
+        <div class="sentence-item mb-3 p-3 border rounded">
+          <div class="d-flex align-items-start mb-2">
+            <span class="badge badge-primary mr-3 mt-1">${index + 1}</span>
+            <div class="flex-grow-1">
+              <div class="font-italic mb-2">"${sentence.sentence}"</div>
+            </div>
+          </div>
+          <div class="border-top pt-2">
+            <div class="row">
+              <div class="col-md-6 mb-2">
+                <div class="d-flex align-items-center mb-1">
+                  <i class="fas fa-mirror text-success mr-2"></i>
+                  <strong class="text-success">Reflection Strategies:</strong>
+                </div>
+                <div class="pl-3">${reflStrategyTags}</div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-center mb-1">
+                  <i class="fas fa-book-open text-primary mr-2"></i>
+                  <strong class="text-primary">Study Strategies:</strong>
+                </div>
+                <div class="pl-3">${studyStrategyTags}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+  }
+  
+  html += `
+      </div>
+    </div>
+  `;
+  
+  container.innerHTML = html;
+  
+  // Initialize tooltips
+  initializeTooltips();
+}
+
+// Enhanced strategy summary with tooltips
+function formatStrategySummary(strategySummary) {
+  let html = '';
+  
+  if (strategySummary.reflection_strategies_found && strategySummary.reflection_strategies_found.length > 0) {
+    html += '<div class="mb-3"><h6>Reflection Strategies:</h6>';
+    strategySummary.reflection_strategies_found.forEach(strategy => {
+      const definition = strategyDefinitions[strategy] || 
+                        strategyDefinitions[strategy.charAt(0).toUpperCase() + strategy.slice(1)] || 
+                        'Reflection strategy for metacognitive learning.';
+      html += `<span class="badge badge-success mr-1 mb-1 strategy-tag" 
+                   title="${definition}"
+                   style="cursor: help;">${strategy}</span>`;
+    });
+    html += '</div>';
+  }
+  
+  if (strategySummary.study_strategies_found && strategySummary.study_strategies_found.length > 0) {
+    html += '<div class="mb-3"><h6>Study Strategies:</h6>';
+    strategySummary.study_strategies_found.forEach(strategy => {
+      const definition = strategyDefinitions[strategy] || 
+                        strategyDefinitions[strategy.charAt(0).toUpperCase() + strategy.slice(1)] || 
+                        'Evidence-based study technique for improving learning.';
+      html += `<span class="badge badge-primary mr-1 mb-1 strategy-tag" 
+                   title="${definition}"
+                   style="cursor: help;">${strategy}</span>`;
+    });
+    html += '</div>';
+  }
+  
+  if (html === '') {
+    html = '<p class="text-muted">No specific strategies detected in this reflection.</p>';
+  }
+  
+  // Initialize tooltips after content is added
+  setTimeout(() => {
+    initializeTooltips();
+  }, 100);
+  
+  return html;
+}
+
+// Initialize tooltips function
+function initializeTooltips() {
+  // Remove existing tooltips
+  const existingTooltips = document.querySelectorAll('.tooltip');
+  existingTooltips.forEach(tooltip => tooltip.remove());
+  
+  // Initialize new tooltips
+  const strategyTags = document.querySelectorAll('.strategy-tag[title]');
+  strategyTags.forEach(tag => {
+    // Use native browser tooltip (title attribute) - most reliable
+    tag.style.cursor = 'help';
+    
+    // Optional: Add custom hover effect
+    tag.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-1px)';
+      this.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.15)';
+    });
+    
+    tag.addEventListener('mouseleave', function() {
+      this.style.transform = '';
+      this.style.boxShadow = '';
+    });
+  });
+}
+
+// Call initialize tooltips when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  initializeTooltips();
+});
+</script>
+
 <style>
 /* Minimal custom styles - let Hugo Blox handle everything else */
 #reflection:focus {
@@ -115,6 +312,33 @@
 .card:hover {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: box-shadow 0.3s ease;
+}
+
+/* Enhanced tooltip and strategy tag styling */
+.sentence-item {
+  background: #f8f9fa;
+  border-left: 4px solid #007bff;
+}
+
+.sentence-item:hover {
+  background: #e9ecef;
+  transition: background-color 0.3s ease;
+}
+
+.strategy-tag {
+  cursor: help !important;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.strategy-tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Improve tooltip styling */
+.strategy-tag[title]:hover {
+  text-decoration: none;
 }
 </style>
 
