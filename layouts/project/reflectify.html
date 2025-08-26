@@ -109,7 +109,29 @@
 <script>
 // Strategy definitions for tooltips
 const strategyDefinitions = {
-  // Reflection Strategies
+  // Reflection Strategies - API format (lowercase with underscores)
+  'self_explanation': 'Explaining to yourself how new information relates to what you already know or how it relates to concepts within the information.',
+  'elaborative_interrogation': 'Generating explanations for why facts or concepts are true.',
+  'critical_analysis': 'Evaluating information by questioning assumptions, identifying biases, and assessing evidence quality.',
+  'feelings_reflection': 'Reflecting on emotional responses to learning experiences and how they impact understanding.',
+  'outcome_evaluation': 'Assessing the results and effectiveness of your learning or study session.',
+  'personal_connection': 'Connecting new information to personal experiences, beliefs, or prior knowledge.',
+  'experience_reflection': 'Thinking about past learning experiences and what worked or didn\'t work.',
+  'perspective_taking': 'Considering multiple viewpoints or approaches to understanding a concept.',
+  
+  // Study Strategies - API format (lowercase with underscores)
+  'summarization': 'Creating concise summaries of key information to aid understanding and retention.',
+  'rereading': 'Going back over material multiple times to reinforce learning (though not always most effective).',
+  'interleaved_practice': 'Mixing different types of problems or concepts during study sessions rather than focusing on one at a time.',
+  'imagery_for_text': 'Creating mental images to help understand and remember textual information.',
+  'keyword_mnemonic': 'Using memorable words or phrases to help recall information.',
+  'distributed_practice': 'Spreading out study sessions over time rather than cramming (also known as spaced practice).',
+  'practice_testing': 'Testing yourself on material to improve retention and identify knowledge gaps.',
+  'highlighting_underlining': 'Marking important text passages (effectiveness varies by implementation).',
+  'highlighting': 'Marking important text passages (effectiveness varies by implementation).',
+  'underlining': 'Marking important text passages (effectiveness varies by implementation).',
+  
+  // Legacy formats for backward compatibility
   'Self-explanation': 'Explaining to yourself how new information relates to what you already know or how it relates to concepts within the information.',
   'Elaborative interrogation': 'Generating explanations for why facts or concepts are true.',
   'Critical analysis': 'Evaluating information by questioning assumptions, identifying biases, and assessing evidence quality.',
@@ -118,8 +140,6 @@ const strategyDefinitions = {
   'Personal connection': 'Connecting new information to personal experiences, beliefs, or prior knowledge.',
   'Experience reflection': 'Thinking about past learning experiences and what worked or didn\'t work.',
   'Perspective taking': 'Considering multiple viewpoints or approaches to understanding a concept.',
-  
-  // Study Strategies  
   'Summarization': 'Creating concise summaries of key information to aid understanding and retention.',
   'Rereading': 'Going back over material multiple times to reinforce learning (though not always most effective).',
   'Interleaved practice': 'Mixing different types of problems or concepts during study sessions rather than focusing on one at a time.',
@@ -128,8 +148,6 @@ const strategyDefinitions = {
   'Distributed practice': 'Spreading out study sessions over time rather than cramming (also known as spaced practice).',
   'Practice testing': 'Testing yourself on material to improve retention and identify knowledge gaps.',
   'Highlighting/underlining': 'Marking important text passages (effectiveness varies by implementation).',
-  
-  // Capitalized versions for consistency
   'Self-Explanation': 'Explaining to yourself how new information relates to what you already know or how it relates to concepts within the information.',
   'Elaborative Interrogation': 'Generating explanations for why facts or concepts are true.',
   'Critical Analysis': 'Evaluating information by questioning assumptions, identifying biases, and assessing evidence quality.',
@@ -138,8 +156,6 @@ const strategyDefinitions = {
   'Personal Connection': 'Connecting new information to personal experiences, beliefs, or prior knowledge.',
   'Experience Reflection': 'Thinking about past learning experiences and what worked or didn\'t work.',
   'Perspective Taking': 'Considering multiple viewpoints or approaches to understanding a concept.',
-  'Summarization': 'Creating concise summaries of key information to aid understanding and retention.',
-  'Rereading': 'Going back over material multiple times to reinforce learning (though not always most effective).',
   'Interleaved Practice': 'Mixing different types of problems or concepts during study sessions rather than focusing on one at a time.',
   'Imagery for Text': 'Creating mental images to help understand and remember textual information.',
   'Keyword Mnemonic': 'Using memorable words or phrases to help recall information.',
@@ -178,9 +194,11 @@ function displaySentenceAnalysis(sentences) {
                            strategyDefinitions[strategy.charAt(0).toUpperCase() + strategy.slice(1)] || 
                            'Learning strategy identified in this sentence.';
           const badgeClass = type === 'reflection' ? 'badge-success' : 'badge-primary';
+          // Convert underscore format to display format
+          const displayName = strategy.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
           return `<span class="badge ${badgeClass} mr-1 mb-1 strategy-tag" 
                        title="${definition}"
-                       style="cursor: help; font-size: 0.75rem;">${strategy}</span>`;
+                       style="cursor: help; font-size: 0.75rem;">${displayName}</span>`;
         }).join('');
       };
       
@@ -239,9 +257,11 @@ function formatStrategySummary(strategySummary) {
       const definition = strategyDefinitions[strategy] || 
                         strategyDefinitions[strategy.charAt(0).toUpperCase() + strategy.slice(1)] || 
                         'Reflection strategy for metacognitive learning.';
+      // Convert underscore format to display format
+      const displayName = strategy.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
       html += `<span class="badge badge-success mr-1 mb-1 strategy-tag" 
                    title="${definition}"
-                   style="cursor: help;">${strategy}</span>`;
+                   style="cursor: help;">${displayName}</span>`;
     });
     html += '</div>';
   }
@@ -252,9 +272,11 @@ function formatStrategySummary(strategySummary) {
       const definition = strategyDefinitions[strategy] || 
                         strategyDefinitions[strategy.charAt(0).toUpperCase() + strategy.slice(1)] || 
                         'Evidence-based study technique for improving learning.';
+      // Convert underscore format to display format
+      const displayName = strategy.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
       html += `<span class="badge badge-primary mr-1 mb-1 strategy-tag" 
                    title="${definition}"
-                   style="cursor: help;">${strategy}</span>`;
+                   style="cursor: help;">${displayName}</span>`;
     });
     html += '</div>';
   }
