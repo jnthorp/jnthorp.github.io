@@ -356,17 +356,25 @@ function formatFeedback(feedback) {
     .replace(/(<li>.*<\/li>)/s, '<ul class="mb-3">$1</ul>');
 }
 
+// Helper function to format strategy names for display
+function formatStrategyName(strategy) {
+  return strategy.split('_').map(word => 
+    word.charAt(0).toUpperCase() + word.slice(1)
+  ).join(' ');
+}
+
 function formatStrategySummary(strategySummary) {
   let html = '';
   
   if (strategySummary.reflection_strategies_found && strategySummary.reflection_strategies_found.length > 0) {
     html += '<div class="mb-3"><h6>Reflection Strategies:</h6>';
     strategySummary.reflection_strategies_found.forEach(strategy => {
-      const definition = strategyDefinitions[strategy] || strategyDefinitions[strategy.charAt(0).toUpperCase() + strategy.slice(1)] || 'Reflection strategy for metacognitive learning.';
+      const definition = strategyDefinitions[strategy] || 'Reflection strategy for metacognitive learning.';
+      const displayName = formatStrategyName(strategy);
       html += `<span class="badge bg-success me-1 mb-1 strategy-tag" 
                    data-bs-toggle="tooltip" 
                    data-bs-placement="top" 
-                   data-bs-title="${definition}">${strategy}</span>`;
+                   data-bs-title="${definition}">${displayName}</span>`;
     });
     html += '</div>';
   }
@@ -374,11 +382,12 @@ function formatStrategySummary(strategySummary) {
   if (strategySummary.study_strategies_found && strategySummary.study_strategies_found.length > 0) {
     html += '<div class="mb-3"><h6>Study Strategies:</h6>';
     strategySummary.study_strategies_found.forEach(strategy => {
-      const definition = strategyDefinitions[strategy] || strategyDefinitions[strategy.charAt(0).toUpperCase() + strategy.slice(1)] || 'Evidence-based study technique for improving learning.';
+      const definition = strategyDefinitions[strategy] || 'Evidence-based study technique for improving learning.';
+      const displayName = formatStrategyName(strategy);
       html += `<span class="badge bg-primary me-1 mb-1 strategy-tag" 
                    data-bs-toggle="tooltip" 
                    data-bs-placement="top" 
-                   data-bs-title="${definition}">${strategy}</span>`;
+                   data-bs-title="${definition}">${displayName}</span>`;
     });
     html += '</div>';
   }
@@ -633,12 +642,13 @@ function displaySentenceAnalysis(sentences) {
       
       return strategies.map(strategy => {
         const definition = strategyDefinitions[strategy] || 'Learning strategy identified in this sentence.';
+        const displayName = formatStrategyName(strategy);
         const badgeClass = type === 'reflection' ? 'bg-success' : 'bg-primary';
         return `<span class="badge ${badgeClass} me-1 mb-1" 
                      data-bs-toggle="tooltip" 
                      data-bs-placement="top" 
                      data-bs-title="${definition}"
-                     style="font-size: 0.7rem;">${strategy}</span>`;
+                     style="font-size: 0.7rem;">${displayName}</span>`;
       }).join('');
     };
     
