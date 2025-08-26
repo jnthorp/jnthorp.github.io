@@ -371,13 +371,8 @@ function formatStrategySummary(strategySummary) {
     strategySummary.reflection_strategies_found.forEach(strategy => {
       const definition = strategyDefinitions[strategy] || 'Reflection strategy for metacognitive learning.';
       const displayName = formatStrategyName(strategy);
-      html += `<span class="badge bg-success me-1 mb-1 strategy-tag" 
-                   data-bs-toggle="tooltip" 
-                   data-toggle="tooltip"
-                   data-bs-placement="top" 
-                   data-placement="top"
-                   data-bs-title="${definition}"
-                   title="${definition}">${displayName}</span>`;
+      html += `<span class="badge bg-success me-1 mb-1 strategy-tag custom-tooltip" 
+                   data-tooltip="${definition}">${displayName}</span>`;
     });
     html += '</div>';
   }
@@ -387,13 +382,8 @@ function formatStrategySummary(strategySummary) {
     strategySummary.study_strategies_found.forEach(strategy => {
       const definition = strategyDefinitions[strategy] || 'Evidence-based study technique for improving learning.';
       const displayName = formatStrategyName(strategy);
-      html += `<span class="badge bg-primary me-1 mb-1 strategy-tag" 
-                   data-bs-toggle="tooltip" 
-                   data-toggle="tooltip"
-                   data-bs-placement="top" 
-                   data-placement="top"
-                   data-bs-title="${definition}"
-                   title="${definition}">${displayName}</span>`;
+      html += `<span class="badge bg-primary me-1 mb-1 strategy-tag custom-tooltip" 
+                   data-tooltip="${definition}">${displayName}</span>`;
     });
     html += '</div>';
   }
@@ -591,10 +581,8 @@ function displayFeatureInsights(features) {
     
     html += `<tr>
       <td>
-        <button type="button" class="${btnClass} strategy-tag" 
-                data-bs-toggle="tooltip" 
-                data-bs-placement="top" 
-                data-bs-title="${def.desc}" 
+        <button type="button" class="${btnClass} strategy-tag custom-tooltip" 
+                data-tooltip="${def.desc}" 
                 style="font-size: 0.85em;">${def.name}${flag}</button>
       </td>
       <td>
@@ -650,13 +638,8 @@ function displaySentenceAnalysis(sentences) {
         const definition = strategyDefinitions[strategy] || 'Learning strategy identified in this sentence.';
         const displayName = formatStrategyName(strategy);
         const badgeClass = type === 'reflection' ? 'bg-success' : 'bg-primary';
-        return `<span class="badge ${badgeClass} me-1 mb-1" 
-                     data-bs-toggle="tooltip" 
-                     data-toggle="tooltip"
-                     data-bs-placement="top" 
-                     data-placement="top"
-                     data-bs-title="${definition}"
-                     title="${definition}"
+        return `<span class="badge ${badgeClass} me-1 mb-1 custom-tooltip" 
+                     data-tooltip="${definition}"
                      style="font-size: 0.7rem;">${displayName}</span>`;
       }).join('');
     };
@@ -703,51 +686,8 @@ function displaySentenceAnalysis(sentences) {
 }
 
 function initializeTooltips() {
-  // Initialize Bootstrap tooltips with fallback for different Bootstrap versions
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"], [data-toggle="tooltip"]');
-  
-  // Try Bootstrap 5 first
-  if (window.bootstrap && window.bootstrap.Tooltip) {
-    tooltipTriggerList.forEach(tooltipTriggerEl => {
-      // Update data attributes for consistency
-      if (tooltipTriggerEl.hasAttribute('data-bs-toggle')) {
-        new window.bootstrap.Tooltip(tooltipTriggerEl, {
-          customClass: 'academic-tooltip'
-        });
-      }
-    });
-    console.log('Bootstrap 5 tooltips initialized');
-  } 
-  // Fallback to Bootstrap 4 or jQuery tooltips
-  else if (window.$ && window.$.fn.tooltip) {
-    // Convert Bootstrap 5 attributes to Bootstrap 4
-    tooltipTriggerList.forEach(tooltipTriggerEl => {
-      if (tooltipTriggerEl.hasAttribute('data-bs-title')) {
-        const title = tooltipTriggerEl.getAttribute('data-bs-title');
-        tooltipTriggerEl.setAttribute('title', title);
-        tooltipTriggerEl.setAttribute('data-toggle', 'tooltip');
-        tooltipTriggerEl.setAttribute('data-placement', 
-          tooltipTriggerEl.getAttribute('data-bs-placement') || 'top');
-      }
-    });
-    
-    // Initialize jQuery/Bootstrap 4 tooltips
-    window.$('[data-toggle="tooltip"]').tooltip({
-      customClass: 'academic-tooltip'
-    });
-    console.log('Bootstrap 4/jQuery tooltips initialized');
-  }
-  else {
-    console.warn('Neither Bootstrap 5 nor jQuery tooltips available');
-    // Fallback to native tooltips using title attribute
-    tooltipTriggerList.forEach(tooltipTriggerEl => {
-      if (tooltipTriggerEl.hasAttribute('data-bs-title')) {
-        const title = tooltipTriggerEl.getAttribute('data-bs-title');
-        tooltipTriggerEl.setAttribute('title', title);
-      }
-    });
-    console.log('Using native title tooltips as fallback');
-  }
+  // Use simple CSS tooltips instead of Bootstrap - more reliable in Hugo
+  console.log('Using CSS-based tooltips for Hugo compatibility');
 }
 
 // checkApiStatus function removed - apiStatus element doesn't exist in HTML
