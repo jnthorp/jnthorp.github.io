@@ -6,6 +6,7 @@ const API_URL = 'https://reflectify-api.up.railway.app';
 
 // Strategy and Feature Definitions
 const strategyDefinitions = {
+  // Study Strategies
   'self_explanation': 'Explaining concepts to yourself in your own words to deepen understanding',
   'elaborative_interrogation': 'Asking yourself "why" questions to understand underlying principles',
   'summarization': 'Creating concise summaries to identify and remember key information',
@@ -14,7 +15,15 @@ const strategyDefinitions = {
   'rereading': 'Going through material multiple times to improve comprehension',
   'practice_testing': 'Testing yourself on material to strengthen memory and identify gaps',
   'distributed_practice': 'Spacing out study sessions over time rather than cramming',
-  'interleaved_practice': 'Mixing different types of problems or topics within study sessions'
+  'interleaved_practice': 'Mixing different types of problems or topics within study sessions',
+  
+  // Reflection Strategies
+  'experience_reflection': 'Reflecting on past learning experiences and what worked or didn\'t work',
+  'outcome_evaluation': 'Assessing the results and effectiveness of your learning activities',
+  'perspective_taking': 'Considering multiple viewpoints or approaches to understanding a concept',
+  'critical_analysis': 'Questioning assumptions, evaluating effectiveness, and analyzing your approach',
+  'feelings_reflection': 'Reflecting on emotional responses to learning experiences',
+  'personal_connection': 'Connecting new learning to personal experiences, beliefs, or prior knowledge'
 };
 
 const featureDefinitions = {
